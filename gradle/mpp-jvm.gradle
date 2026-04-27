@@ -1,13 +1,16 @@
 
 
 kotlin {
-    jvm()
+    jvm {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = '1.8'
+            }
+        }
+    }
     sourceSets {
         jvmTest {
             dependencies {
-//                    if (project.name != "tests") {
-//                        implementation project(":tests")
-//                    }
                 implementation kotlin('test')
                 implementation kotlin('test-junit')
             }

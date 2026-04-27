@@ -1,13 +1,6 @@
-buildscript {
-    dependencies {
-        classpath "org.jetbrains.kotlinx:binary-compatibility-validator:0.12.1"
-    }
-}
 plugins {
-    id "org.jetbrains.kotlin.multiplatform" version "1.8.10" apply(false)
+    id "org.jetbrains.kotlin.multiplatform" version "2.3.21" apply(false)
 }
-
-apply plugin: "binary-compatibility-validator"
 
 final String thisLibraryVersion = file("libraries_version.txt").readLines().first()
 

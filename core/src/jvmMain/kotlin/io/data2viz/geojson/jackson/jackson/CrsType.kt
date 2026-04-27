@@ -12,12 +12,12 @@ enum class CrsType {
         @JvmStatic
         @JsonCreator
         fun forValue(value: String): CrsType {
-            return valueOf(value.toUpperCase())
+            return valueOf(value.uppercase())
         }
 
     }
 
     @JsonValue
-    fun toValue(): String = name.toLowerCase()
+    fun toValue(): String = name.lowercase()
 
 }

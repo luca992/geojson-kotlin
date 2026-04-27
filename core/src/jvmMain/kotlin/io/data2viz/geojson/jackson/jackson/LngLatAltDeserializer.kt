@@ -10,7 +10,7 @@ import java.io.IOException
 import java.util.ArrayList
 
 class LngLatAltDeserializer : JsonDeserializer<LngLatAlt>() {
-    
+
     fun DeserializationContext.handle(
         clazz: Class<*>,
         jp: JsonParser
@@ -49,20 +49,28 @@ class LngLatAltDeserializer : JsonDeserializer<LngLatAlt>() {
         return if (token == null) {
             if (optional)
                 java.lang.Double.NaN
-            else
-                throw ctxt.mappingException("Unexpected end-of-input when binding data into LngLatAlt")
+            else {
+                ctxt.reportInputMismatch<Double>(LngLatAlt::class.java, "Unexpected end-of-input when binding data into LngLatAlt")
+                throw IllegalStateException("Should not reach here")
+            }
         } else {
             when (token) {
                 JsonToken.END_ARRAY -> if (optional)
                     java.lang.Double.NaN
-                else
-                    throw ctxt.mappingException("Unexpected end-of-input when binding data into LngLatAlt")
+                else {
+                    ctxt.reportInputMismatch<Double>(LngLatAlt::class.java, "Unexpected end-of-input when binding data into LngLatAlt")
+                    throw IllegalStateException("Should not reach here")
+                }
                 JsonToken.VALUE_NUMBER_FLOAT -> jp.doubleValue
                 JsonToken.VALUE_NUMBER_INT -> jp.longValue.toDouble()
                 JsonToken.VALUE_STRING -> jp.valueAsDouble
-                else -> throw ctxt.mappingException(
-                    "Unexpected token (" + token.name + ") when binding data into LngLatAlt"
-                )
+                else -> {
+                    ctxt.reportInputMismatch<Double>(
+                        LngLatAlt::class.java,
+                        "Unexpected token (" + token.name + ") when binding data into LngLatAlt"
+                    )
+                    throw IllegalStateException("Should not reach here")
+                }
             }
         }
     }
