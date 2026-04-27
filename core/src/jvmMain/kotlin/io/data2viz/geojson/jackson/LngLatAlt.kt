@@ -1,11 +1,5 @@
 package io.data2viz.geojson.jackson
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize
-import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import io.data2viz.geojson.jackson.jackson.LngLatAltDeserializer
-import io.data2viz.geojson.jackson.jackson.LngLatAltSerializer
-
-import java.io.Serializable
 import java.util.Arrays
 
 /**
@@ -13,15 +7,13 @@ import java.util.Arrays
  * The specification allows for any number of additional elements in a position, after lng, lat, alt.
  * http://geojson.org/geojson-spec.html#positions
  */
-@JsonDeserialize(using = LngLatAltDeserializer::class)
-@JsonSerialize(using = LngLatAltSerializer::class)
 class LngLatAlt
 (
     var longitude: Double,
     var latitude: Double,
     private var altitude: Double = Double.NaN,
     vararg additionalElements: Double
-) : Serializable {
+) {
 
     private var additionalElements = DoubleArray(0)
 

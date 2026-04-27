@@ -1,9 +1,10 @@
 package io.data2viz.geojson.jackson.jackson
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import io.data2viz.geojson.jackson.GeoJsonObject
 import io.data2viz.geojson.jackson.LineString
 import io.data2viz.geojson.jackson.LngLatAlt
-import org.intellij.lang.annotations.Language
+import io.data2viz.geojson.jackson.geoJson
+import kotlinx.serialization.encodeToString
 import org.junit.Test
 
 import org.junit.Assert.assertEquals
@@ -11,10 +12,7 @@ import org.junit.Assert.assertNotNull
 
 class LineStringTest {
 
-    private val mapper = ObjectMapper()
-
     @Test
-    @Throws(Exception::class)
     fun itShouldSerializeMultiPoint() {
         val lineString = LineString(
             LngLatAlt(100.0, 0.0),
@@ -23,17 +21,14 @@ class LineStringTest {
         //language=JSON
         assertEquals(
             """{"type":"LineString","coordinates":[[100.0,0.0],[101.0,1.0]]}""",
-            mapper.writeValueAsString(lineString)
+            geoJson.encodeToString<GeoJsonObject>(lineString)
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldDeserializeLineString() {
-        @Language("JSON")
-        val lineString = mapper.readValue(
-            """{"type":"LineString","coordinates":[[100.0,0.0],[101.0,1.0]]}""",
-            LineString::class.java
+        val lineString = geoJson.decodeFromString<LineString>(
+            """{"type":"LineString","coordinates":[[100.0,0.0],[101.0,1.0]]}"""
         )
         assertNotNull(lineString)
         val coordinates = lineString.coordinates

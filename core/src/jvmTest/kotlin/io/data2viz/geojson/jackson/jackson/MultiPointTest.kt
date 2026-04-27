@@ -1,9 +1,10 @@
 package io.data2viz.geojson.jackson.jackson
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import io.data2viz.geojson.jackson.GeoJsonObject
 import io.data2viz.geojson.jackson.LngLatAlt
 import io.data2viz.geojson.jackson.MultiPoint
-import org.intellij.lang.annotations.Language
+import io.data2viz.geojson.jackson.geoJson
+import kotlinx.serialization.encodeToString
 import org.junit.Test
 
 import org.junit.Assert.assertEquals
@@ -11,10 +12,7 @@ import org.junit.Assert.assertNotNull
 
 class MultiPointTest {
 
-    private val mapper = ObjectMapper()
-
     @Test
-    @Throws(Exception::class)
     fun itShouldSerializeMultiPoint() {
         val multiPoint = MultiPoint(
             LngLatAlt(100.0, 0.0),
@@ -23,19 +21,15 @@ class MultiPointTest {
         //language=JSON
         assertEquals(
             """{"type":"MultiPoint","coordinates":[[100.0,0.0],[101.0,1.0]]}""",
-            mapper.writeValueAsString(multiPoint)
+            geoJson.encodeToString<GeoJsonObject>(multiPoint)
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldDeserializeMultiPoint() {
-        @Language("JSON")
-        val multiPoint = mapper
-            .readValue(
-                """{"type":"MultiPoint","coordinates":[[100.0,0.0],[101.0,1.0]]}""",
-                MultiPoint::class.java
-            )
+        val multiPoint = geoJson.decodeFromString<MultiPoint>(
+            """{"type":"MultiPoint","coordinates":[[100.0,0.0],[101.0,1.0]]}"""
+        )
         assertNotNull(multiPoint)
         val coordinates = multiPoint.coordinates
         PointTest.assertLngLatAlt(100.0, 0.0, java.lang.Double.NaN, coordinates[0])

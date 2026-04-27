@@ -1,38 +1,33 @@
 package io.data2viz.geojson.jackson.jackson
 
-import com.fasterxml.jackson.core.JsonProcessingException
-import com.fasterxml.jackson.databind.ObjectMapper
 import io.data2viz.geojson.jackson.GeoJsonObject
 import io.data2viz.geojson.jackson.LngLatAlt
 import io.data2viz.geojson.jackson.Point
-import org.intellij.lang.annotations.Language
+import io.data2viz.geojson.jackson.geoJson
+import kotlinx.serialization.encodeToString
 import org.junit.Test
 
-import java.io.IOException
 import java.util.Arrays
 
 import org.junit.Assert.*
 
 class PointTest {
 
-    private val mapper = ObjectMapper()
-
     @Test
-    @Throws(Exception::class)
     fun itShouldSerializeAPoint() {
         val point = Point(100.0, 0.0)
         //language=JSON
         assertEquals(
             """{"type":"Point","coordinates":[100.0,0.0]}""",
-            mapper.writeValueAsString(point)
+            geoJson.encodeToString<GeoJsonObject>(point)
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldDeserializeAPoint() {
-        val value = mapper
-            .readValue("{\"type\":\"Point\",\"coordinates\":[100.0,5.0]}", GeoJsonObject::class.java)
+        val value = geoJson.decodeFromString<GeoJsonObject>(
+            "{\"type\":\"Point\",\"coordinates\":[100.0,5.0]}"
+        )
         assertNotNull(value)
         assertTrue(value is Point)
         val point = value as Point
@@ -40,59 +35,50 @@ class PointTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldDeserializeAPointWithAltitude() {
-        @Language("JSON")
-        val value = mapper.readValue(
-            """{"type":"Point","coordinates":[100.0,5.0,123]}""",
-            GeoJsonObject::class.java
+        val value = geoJson.decodeFromString<GeoJsonObject>(
+            """{"type":"Point","coordinates":[100.0,5.0,123]}"""
         )
         val point = value as Point
         assertLngLatAlt(100.0, 5.0, 123.0, point.coordinates)
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldSerializeAPointWithAltitude() {
         val point = Point(100.0, 0.0, 256.0)
         //language=JSON
         assertEquals(
             """{"type":"Point","coordinates":[100.0,0.0,256.0]}""",
-            mapper.writeValueAsString(point)
+            geoJson.encodeToString<GeoJsonObject>(point)
         )
     }
 
     @Test
-    @Throws(IOException::class)
     fun itShouldDeserializeAPointWithAdditionalAttributes() {
-        @Language("JSON")
-        val value = mapper.readValue(
-            """{"type":"Point","coordinates":[100.0,5.0,123,456,789.2]}""",
-            GeoJsonObject::class.java
+        val value = geoJson.decodeFromString<GeoJsonObject>(
+            """{"type":"Point","coordinates":[100.0,5.0,123,456,789.2]}"""
         )
         val point = value as Point
         assertLngLatAlt(100.0, 5.0, 123.0, doubleArrayOf(456.0, 789.2), point.coordinates)
     }
 
     @Test
-    @Throws(JsonProcessingException::class)
     fun itShouldSerializeAPointWithAdditionalAttributes() {
         val point = Point(100.0, 0.0, 256.0, 345.0, 678.0)
         //language=JSON
         assertEquals(
             """{"type":"Point","coordinates":[100.0,0.0,256.0,345.0,678.0]}""",
-            mapper.writeValueAsString(point)
+            geoJson.encodeToString<GeoJsonObject>(point)
         )
     }
 
     @Test
-    @Throws(JsonProcessingException::class)
     fun itShouldSerializeAPointWithAdditionalAttributesAndNull() {
         val point = Point(100.0, 0.0, 256.0, 345.0, 678.0)
         //language=JSON
         assertEquals(
             """{"type":"Point","coordinates":[100.0,0.0,256.0,345.0,678.0]}""",
-            mapper.writeValueAsString(point)
+            geoJson.encodeToString<GeoJsonObject>(point)
         )
     }
 

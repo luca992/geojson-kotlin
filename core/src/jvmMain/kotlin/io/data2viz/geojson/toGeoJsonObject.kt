@@ -1,8 +1,8 @@
 package io.data2viz.geojson
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import io.data2viz.geojson.jackson.LngLatAlt
-
+import io.data2viz.geojson.jackson.geoJson
+import io.data2viz.geojson.jackson.jackson.toAnyValue
 
 typealias JacksonGeoJsonObject 		= io.data2viz.geojson.jackson.GeoJsonObject
 typealias JacksonPoint 				= io.data2viz.geojson.jackson.Point
@@ -19,7 +19,7 @@ typealias JacksonFeatureCollection 	= io.data2viz.geojson.jackson.FeatureCollect
  * Parse the String as a GeoJsonObject
  */
 actual fun String.toGeoJsonObject(): GeoJsonObject =
-	ObjectMapper().readValue(this, JacksonGeoJsonObject::class.java).toGeoJsonObject()
+	geoJson.decodeFromString<JacksonGeoJsonObject>(this).toGeoJsonObject()
 
 fun io.data2viz.geojson.jackson.GeoJsonObject.toGeoJsonObject(): GeoJsonObject = when (this) {
 	is JacksonPoint 					-> this.toPoint()
@@ -31,24 +31,20 @@ fun io.data2viz.geojson.jackson.GeoJsonObject.toGeoJsonObject(): GeoJsonObject =
 	is JacksonGeometryCollection 		-> this.toGeometryCollection()
 	is JacksonFeature 					-> this.toFeature()
 	is JacksonFeatureCollection 		-> this.toFeatureCollection()
-
-	else -> {
-		throw IllegalStateException("Unknown GeoJson type:: ${this.javaClass}")
-	}
 }
 
 private fun JacksonPoint.toPoint()									= Point(this.coordinates.toPosition())
-private fun io.data2viz.geojson.jackson.MultiPoint.toMultiPoint() 	= MultiPoint(this.coordinates.toLine())
-private fun io.data2viz.geojson.jackson.LineString.toLineString() 	= LineString(this.coordinates.toLine())
+private fun JacksonMultiPoint.toMultiPoint() 						= MultiPoint(this.coordinates.toLine())
+private fun JacksonLineString.toLineString() 						= LineString(this.coordinates.toLine())
 private fun JacksonMultiLineString.toMultiLineString() 				= MultiLineString(this.coordinates.toSurface())
 private fun JacksonPolygon.toPolygon() 								= Polygon(this.coordinates.toSurface())
 private fun JacksonMultiPolygon.toMultiPolygon() 					= MultiPolygon(this.coordinates.toSurfaces())
-private fun JacksonGeometryCollection.toGeometryCollection() 		= GeometryCollection(this.getGeometries().map { it.toGeoJsonObject() as Geometry }.toTypedArray())
-private fun JacksonFeature.toFeature() 								= Feature(this.geometry!!.toGeoJsonObject() as Geometry, this.id, this.getProperties())
-private fun JacksonFeatureCollection.toFeatureCollection() 			= FeatureCollection(this.getFeatures().map { it.toFeature() }.toTypedArray())
+private fun JacksonGeometryCollection.toGeometryCollection() 		= GeometryCollection(this.geometries.map { it.toGeoJsonObject() as Geometry }.toTypedArray())
+private fun JacksonFeature.toFeature() 								= Feature(this.geometry!!.toGeoJsonObject() as Geometry, this.id?.toAnyValue(), this.properties?.toAnyValue())
+private fun JacksonFeatureCollection.toFeatureCollection() 			= FeatureCollection(this.features.map { it.toFeature() }.toTypedArray())
 
 
-private fun LngLatAlt.toPosition():Position =
+private fun LngLatAlt.toPosition(): Position =
 	if (hasAltitude()) doubleArrayOf(this.longitude, this.latitude, this.getAltitude())
 	else doubleArrayOf(this.longitude, this.latitude)
 
@@ -65,10 +61,11 @@ actual class FeatureProperties {
 }
 
 actual fun <T> String.toFeaturesAndProperties(extractFunction: FeatureProperties.() -> T): List<Pair<Feature, T>> {
-	val features = ObjectMapper().readValue(this, JacksonFeatureCollection::class.java)
-	val properties = FeatureProperties()
-	return features.getFeatures().map { feature ->
-		properties.properties = feature.getProperties()!!
-		Pair(feature.toFeature(), extractFunction(properties))
+	val features = geoJson.decodeFromString<JacksonFeatureCollection>(this)
+	val fp = FeatureProperties()
+	return features.features.map { feature ->
+		@Suppress("UNCHECKED_CAST")
+		fp.properties = feature.properties?.toAnyValue() as? Map<String, Any?> ?: mapOf()
+		Pair(feature.toFeature(), extractFunction(fp))
 	}
 }

@@ -1,18 +1,16 @@
 package io.data2viz.geojson.jackson.jackson
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import io.data2viz.geojson.jackson.GeoJsonObject
-import io.data2viz.geojson.jackson.GeoJsonObjectVisitor
+import io.data2viz.geojson.jackson.Point
+import io.data2viz.geojson.jackson.LngLatAlt
+import org.junit.Test
+import org.junit.Assert.assertTrue
 
 class GeoJsonObjectTest {
 
-    private val mapper = ObjectMapper()
-
-
-    private inner class TestGeoJsonObject : GeoJsonObject() {
-
-        override fun <T> accept(geoJsonObjectVisitor: GeoJsonObjectVisitor<T>): T {
-            throw RuntimeException("not implemented")
-        }
+    @Test
+    fun itShouldBeAGeoJsonObject() {
+        val point = Point(LngLatAlt(0.0, 0.0))
+        assertTrue(point is GeoJsonObject)
     }
 }

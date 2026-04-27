@@ -1,7 +1,8 @@
 package io.data2viz.geojson.jackson.jackson
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import io.data2viz.geojson.jackson.LngLatAlt
+import io.data2viz.geojson.jackson.geoJson
+import kotlinx.serialization.json.JsonElement
 import org.junit.Assert
 import org.junit.Test
 
@@ -10,13 +11,15 @@ import org.junit.Test
  */
 class LngLatAltDeserializerTest {
     @Test
-    @Throws(Exception::class)
     fun deserializeMongoLngLatAlt() {
         val lngLatAlt = LngLatAlt(10.0, 15.0, 5.0)
-        val lngLatAltJson = ObjectMapper().writeValueAsString(lngLatAlt)
+        val lngLatAltJson = geoJson.encodeToString(
+            JsonElement.serializer(),
+            geoJson.encodeToJsonElement(LngLatAltSerializer, lngLatAlt)
+        )
         lngLatAltJson.replace("10.0", "\"10.0\"")
         lngLatAltJson.replace("15.0", "\"15.0\"")
-        val lngLatAlt1 = ObjectMapper().readValue(lngLatAltJson, LngLatAlt::class.java)
+        val lngLatAlt1 = geoJson.decodeFromString(LngLatAltSerializer, lngLatAltJson)
         Assert.assertTrue(lngLatAlt == lngLatAlt)
     }
 }

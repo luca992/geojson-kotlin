@@ -1,27 +1,46 @@
 package io.data2viz.geojson.jackson.jackson
 
-import java.io.IOException
-
 import io.data2viz.geojson.jackson.LngLatAlt
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
 
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.databind.JsonSerializer
-import com.fasterxml.jackson.databind.SerializerProvider
+object LngLatAltSerializer : KSerializer<LngLatAlt> {
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("LngLatAlt")
 
-class LngLatAltSerializer : JsonSerializer<LngLatAlt>() {
-
-    @Throws(IOException::class)
-    override fun serialize(value: LngLatAlt, jgen: JsonGenerator, provider: SerializerProvider) {
-        jgen.writeStartArray()
-        jgen.writeNumber(value.longitude)
-        jgen.writeNumber(value.latitude)
-        if (value.hasAltitude()) {
-            jgen.writeNumber(value.getAltitude())
-
-            for (d in value.getAdditionalElements()) {
-                jgen.writeNumber(d)
+    override fun serialize(encoder: Encoder, value: LngLatAlt) {
+        val jsonEncoder = encoder as JsonEncoder
+        val elements = buildList {
+            add(JsonPrimitive(value.longitude))
+            add(JsonPrimitive(value.latitude))
+            if (value.hasAltitude()) {
+                add(JsonPrimitive(value.getAltitude()))
+                for (d in value.getAdditionalElements()) {
+                    add(JsonPrimitive(d))
+                }
             }
         }
-        jgen.writeEndArray()
+        jsonEncoder.encodeJsonElement(JsonArray(elements))
+    }
+
+    override fun deserialize(decoder: Decoder): LngLatAlt {
+        val jsonDecoder = decoder as JsonDecoder
+        val array = jsonDecoder.decodeJsonElement().jsonArray
+        val lng = array[0].jsonPrimitive.double
+        val lat = array[1].jsonPrimitive.double
+        return if (array.size > 2) {
+            val alt = array[2].jsonPrimitive.double
+            val additional = if (array.size > 3) {
+                DoubleArray(array.size - 3) { array[it + 3].jsonPrimitive.double }
+            } else {
+                DoubleArray(0)
+            }
+            LngLatAlt(lng, lat, alt, *additional)
+        } else {
+            LngLatAlt(lng, lat)
+        }
     }
 }

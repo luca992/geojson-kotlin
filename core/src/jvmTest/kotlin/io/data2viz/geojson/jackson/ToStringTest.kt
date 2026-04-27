@@ -1,37 +1,31 @@
 package io.data2viz.geojson.jackson
 
+import io.data2viz.geojson.jackson.jackson.CrsType
 import org.junit.Test
-
-import java.util.Arrays
-
 import org.junit.Assert.assertEquals
 
 class ToStringTest {
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringCrs() {
-        assertEquals("Crs{type='NAME', properties={}}", Crs().toString())
+        assertEquals("Crs(type=NAME, properties={})", Crs().toString())
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringFeature() {
-        assertEquals("Feature{properties={}, geometry=null, id='null'}", Feature().toString())
+        assertEquals("Feature(properties=null, geometry=null, id=null)", Feature().toString())
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringFeatureCollection() {
-        assertEquals("FeatureCollection{features=[]}", FeatureCollection().toString())
+        assertEquals("FeatureCollection(features=[])", FeatureCollection().toString())
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringPoint() {
         val geometry = Point(10.0, 20.0)
         assertEquals(
-            "Point{coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}} GeoJsonObject{}",
+            "Point(coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN})",
             geometry.toString()
         )
     }
@@ -40,7 +34,7 @@ class ToStringTest {
     fun itShouldToStringPointWithAdditionalElements() {
         val geometry = Point(10.0, 20.0, 30.0, 40.0, 50.0)
         assertEquals(
-            "Point{coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=30.0, additionalElements=[40.0, 50.0]}} GeoJsonObject{}",
+            "Point(coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=30.0, additionalElements=[40.0, 50.0]})",
             geometry.toString()
         )
     }
@@ -49,13 +43,12 @@ class ToStringTest {
     fun itShouldToStringPointWithAdditionalElementsAndIgnoreNulls() {
         val geometry = Point(10.0, 20.0, 30.0, 40.0, 50.0)
         assertEquals(
-            "Point{coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=30.0, additionalElements=[40.0, 50.0]}} GeoJsonObject{}",
+            "Point(coordinates=LngLatAlt{longitude=10.0, latitude=20.0, altitude=30.0, additionalElements=[40.0, 50.0]})",
             geometry.toString()
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringPolygon() {
         val geometry = Polygon(
             LngLatAlt(10.0, 20.0),
@@ -64,79 +57,64 @@ class ToStringTest {
             LngLatAlt(10.0, 20.0)
         )
         assertEquals(
-            "Polygon{} Geometry{coordinates=[[LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}, "
+            "Polygon(coordinates=[[LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=30.0, latitude=40.0, altitude=NaN}, LngLatAlt{longitude=10.0, latitude=40.0, altitude=NaN}, "
-                    + "LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}]]} GeoJsonObject{}",
+                    + "LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}]])",
             geometry.toString()
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringMultiPolygon() {
-        val geometry = MultiPolygon(
-            Polygon(
-                LngLatAlt(10.0, 20.0), LngLatAlt(30.0, 40.0),
-                LngLatAlt(10.0, 40.0), LngLatAlt(10.0, 20.0)
-            )
+        val polygon1 = Polygon(
+            LngLatAlt(10.0, 20.0), LngLatAlt(30.0, 40.0),
+            LngLatAlt(10.0, 40.0), LngLatAlt(10.0, 20.0)
         )
-        geometry.add(
-            Polygon(
-                LngLatAlt(5.0, 20.0),
-                LngLatAlt(30.0, 40.0),
-                LngLatAlt(10.0, 40.0),
-                LngLatAlt(
-                    5.0,
-                    20.0
-                )
+        val geometry = polygon1.let { p1 ->
+            val p2 = Polygon(
+                LngLatAlt(5.0, 20.0), LngLatAlt(30.0, 40.0),
+                LngLatAlt(10.0, 40.0), LngLatAlt(5.0, 20.0)
             )
-        )
+            MultiPolygon().add(p1).add(p2)
+        }
         assertEquals(
-            "MultiPolygon{} Geometry{coordinates=[[[LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}, "
+            "MultiPolygon(coordinates=[[[LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=30.0, latitude=40.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=10.0, latitude=40.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}]], "
                     + "[[LngLatAlt{longitude=5.0, latitude=20.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=30.0, latitude=40.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=10.0, latitude=40.0, altitude=NaN}, "
-                    + "LngLatAlt{longitude=5.0, latitude=20.0, altitude=NaN}]]]} GeoJsonObject{}",
+                    + "LngLatAlt{longitude=5.0, latitude=20.0, altitude=NaN}]]])",
             geometry.toString()
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringLineString() {
         val geometry = LineString(
             LngLatAlt(49.0, 9.0),
             LngLatAlt(41.0, 1.0)
         )
         assertEquals(
-            "LineString{} MultiPoint{} Geometry{coordinates=["
+            "LineString(coordinates=["
                     + "LngLatAlt{longitude=49.0, latitude=9.0, altitude=NaN}, "
-                    + "LngLatAlt{longitude=41.0, latitude=1.0, altitude=NaN}]} GeoJsonObject{}",
+                    + "LngLatAlt{longitude=41.0, latitude=1.0, altitude=NaN}])",
             geometry.toString()
         )
     }
 
     @Test
-    @Throws(Exception::class)
     fun itShouldToStringMultiLineString() {
         val geometry = MultiLineString(
-            Arrays.asList(
-                LngLatAlt(49.0, 9.0),
-                LngLatAlt(41.0, 1.0)
-            )
+            listOf(LngLatAlt(49.0, 9.0), LngLatAlt(41.0, 1.0)),
+            listOf(LngLatAlt(10.0, 20.0), LngLatAlt(30.0, 40.0))
         )
-        geometry.add(Arrays.asList(
-            LngLatAlt(10.0, 20.0),
-            LngLatAlt(30.0, 40.0)
-        ))
         assertEquals(
-            "MultiLineString{} Geometry{coordinates=[[LngLatAlt{longitude=49.0, latitude=9.0, altitude=NaN}, "
+            "MultiLineString(coordinates=[[LngLatAlt{longitude=49.0, latitude=9.0, altitude=NaN}, "
                     + "LngLatAlt{longitude=41.0, latitude=1.0, altitude=NaN}], "
                     + "[LngLatAlt{longitude=10.0, latitude=20.0, altitude=NaN}, "
-                    + "LngLatAlt{longitude=30.0, latitude=40.0, altitude=NaN}]]} GeoJsonObject{}",
+                    + "LngLatAlt{longitude=30.0, latitude=40.0, altitude=NaN}]])",
             geometry.toString()
         )
     }
