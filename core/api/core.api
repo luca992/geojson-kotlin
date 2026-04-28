@@ -1,34 +1,3 @@
-public final class io/data2viz/geojson/Crs {
-	public fun <init> ()V
-	public fun <init> (Lio/data2viz/geojson/CrsType;Ljava/util/Map;)V
-	public synthetic fun <init> (Lio/data2viz/geojson/CrsType;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lio/data2viz/geojson/CrsType;
-	public final fun component2 ()Ljava/util/Map;
-	public final fun copy (Lio/data2viz/geojson/CrsType;Ljava/util/Map;)Lio/data2viz/geojson/Crs;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/Crs;Lio/data2viz/geojson/CrsType;Ljava/util/Map;ILjava/lang/Object;)Lio/data2viz/geojson/Crs;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getProperties ()Ljava/util/Map;
-	public final fun getType ()Lio/data2viz/geojson/CrsType;
-	public fun hashCode ()I
-	public final fun setProperties (Ljava/util/Map;)V
-	public final fun setType (Lio/data2viz/geojson/CrsType;)V
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/CrsType : java/lang/Enum {
-	public static final field Companion Lio/data2viz/geojson/CrsType$Companion;
-	public static final field LINK Lio/data2viz/geojson/CrsType;
-	public static final field NAME Lio/data2viz/geojson/CrsType;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public final fun toValue ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/data2viz/geojson/CrsType;
-	public static fun values ()[Lio/data2viz/geojson/CrsType;
-}
-
-public final class io/data2viz/geojson/CrsType$Companion {
-	public final fun forValue (Ljava/lang/String;)Lio/data2viz/geojson/CrsType;
-}
-
 public final class io/data2viz/geojson/Feature : io/data2viz/geojson/GeoJsonObject {
 	public static final field Companion Lio/data2viz/geojson/Feature$Companion;
 	public fun <init> ()V
@@ -40,16 +9,12 @@ public final class io/data2viz/geojson/Feature : io/data2viz/geojson/GeoJsonObje
 	public final fun copy (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;)Lio/data2viz/geojson/Feature;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/Feature;Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;ILjava/lang/Object;)Lio/data2viz/geojson/Feature;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getGeometry ()Lio/data2viz/geojson/Geometry;
 	public final fun getId ()Ljava/lang/Object;
 	public final fun getIdPrimitive ()Lkotlinx/serialization/json/JsonPrimitive;
 	public final fun getProperties ()Ljava/lang/Object;
 	public final fun getPropertiesObject ()Lkotlinx/serialization/json/JsonObject;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -78,12 +43,8 @@ public final class io/data2viz/geojson/FeatureCollection : io/data2viz/geojson/G
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/FeatureCollection;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/FeatureCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/FeatureCollection;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getFeatures ()Ljava/util/List;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -112,7 +73,6 @@ public final class io/data2viz/geojson/FeatureProperties {
 }
 
 public final class io/data2viz/geojson/GeoJsonKt {
-	public static final fun decodeGeoJson (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
 	public static final fun getAlt ([D)Ljava/lang/Double;
 	public static final fun getGeoJson ()Lkotlinx/serialization/json/Json;
 	public static final fun getGeoJsonModule ()Lkotlinx/serialization/modules/SerializersModule;
@@ -120,15 +80,10 @@ public final class io/data2viz/geojson/GeoJsonKt {
 	public static final fun getLon ([D)D
 	public static final fun toFeaturesAndProperties (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun toGeoJsonObject (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
-	public static final fun toJsonString (Lio/data2viz/geojson/GeoJsonObject;)Ljava/lang/String;
 }
 
 public abstract interface class io/data2viz/geojson/GeoJsonObject {
 	public static final field Companion Lio/data2viz/geojson/GeoJsonObject$Companion;
-	public abstract fun getBbox ()[D
-	public abstract fun getCrs ()Lio/data2viz/geojson/Crs;
-	public abstract fun setBbox ([D)V
-	public abstract fun setCrs (Lio/data2viz/geojson/Crs;)V
 }
 
 public final class io/data2viz/geojson/GeoJsonObject$Companion {
@@ -149,12 +104,8 @@ public final class io/data2viz/geojson/GeometryCollection : io/data2viz/geojson/
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/GeometryCollection;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/GeometryCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/GeometryCollection;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getGeometries ()Ljava/util/List;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -182,12 +133,8 @@ public final class io/data2viz/geojson/LineString : io/data2viz/geojson/Geometry
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/LineString;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/LineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/LineString;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -248,12 +195,8 @@ public final class io/data2viz/geojson/MultiLineString : io/data2viz/geojson/Geo
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiLineString;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiLineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiLineString;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -281,12 +224,8 @@ public final class io/data2viz/geojson/MultiPoint : io/data2viz/geojson/Geometry
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiPoint;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPoint;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiPoint;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -315,12 +254,8 @@ public final class io/data2viz/geojson/MultiPolygon : io/data2viz/geojson/Geomet
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiPolygon;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPolygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiPolygon;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -350,12 +285,8 @@ public final class io/data2viz/geojson/Point : io/data2viz/geojson/Geometry {
 	public final fun copy (Lio/data2viz/geojson/LngLatAlt;)Lio/data2viz/geojson/Point;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/Point;Lio/data2viz/geojson/LngLatAlt;ILjava/lang/Object;)Lio/data2viz/geojson/Point;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Lio/data2viz/geojson/LngLatAlt;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -384,16 +315,12 @@ public final class io/data2viz/geojson/Polygon : io/data2viz/geojson/Geometry {
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/Polygon;
 	public static synthetic fun copy$default (Lio/data2viz/geojson/Polygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/Polygon;
 	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getExteriorRing ()Ljava/util/List;
 	public final fun getHasHoles ()Z
 	public final fun getInteriorRing (I)Ljava/util/List;
 	public final fun getInteriorRings ()Ljava/util/List;
 	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 	public final fun withInteriorRing (Ljava/util/List;)Lio/data2viz/geojson/Polygon;
 }

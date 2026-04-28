@@ -5,11 +5,6 @@ import kotlin.test.*
 class ToStringTest {
 
     @Test
-    fun itShouldToStringCrs() {
-        assertEquals("Crs(type=NAME, properties={})", Crs().toString())
-    }
-
-    @Test
     fun itShouldToStringFeature() {
         assertEquals("Feature(propertiesObject=null, geometry=null, idPrimitive=null)", Feature().toString())
     }
