@@ -1,6 +1,7 @@
 public final class io/data2viz/geojson/Feature : io/data2viz/geojson/GeoJsonObject {
 	public static final field Companion Lio/data2viz/geojson/Feature$Companion;
 	public fun <init> ()V
+	public fun <init> (Lio/data2viz/geojson/Geometry;)V
 	public fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;)V
 	public synthetic fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
@@ -246,6 +247,7 @@ public final class io/data2viz/geojson/MultiPolygon : io/data2viz/geojson/Geomet
 	public static final field Companion Lio/data2viz/geojson/MultiPolygon$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/util/List;)V
+	public fun <init> ([Ljava/util/List;)V
 	public fun <init> ([[[[D)V
 	public final fun add (Lio/data2viz/geojson/Polygon;)Lio/data2viz/geojson/MultiPolygon;
 	public final fun component1 ()Ljava/util/List;
@@ -308,6 +310,7 @@ public final class io/data2viz/geojson/Polygon : io/data2viz/geojson/Geometry {
 	public fun <init> ()V
 	public fun <init> (Ljava/util/List;)V
 	public fun <init> ([Lio/data2viz/geojson/LngLatAlt;)V
+	public fun <init> ([Ljava/util/List;)V
 	public fun <init> ([[[D)V
 	public final fun component1 ()Ljava/util/List;
 	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/Polygon;

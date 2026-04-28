@@ -16,6 +16,7 @@ sealed interface io.data2viz.geojson/GeoJsonObject { // io.data2viz.geojson/GeoJ
 }
 
 final class io.data2viz.geojson/Feature : io.data2viz.geojson/GeoJsonObject { // io.data2viz.geojson/Feature|null[0]
+    constructor <init>(io.data2viz.geojson/Geometry) // io.data2viz.geojson/Feature.<init>|<init>(io.data2viz.geojson.Geometry){}[0]
     constructor <init>(kotlinx.serialization.json/JsonObject? = ..., io.data2viz.geojson/Geometry? = ..., kotlinx.serialization.json/JsonPrimitive? = ...) // io.data2viz.geojson/Feature.<init>|<init>(kotlinx.serialization.json.JsonObject?;io.data2viz.geojson.Geometry?;kotlinx.serialization.json.JsonPrimitive?){}[0]
 
     final val geometry // io.data2viz.geojson/Feature.geometry|{}geometry[0]
@@ -250,6 +251,7 @@ final class io.data2viz.geojson/MultiPoint : io.data2viz.geojson/Geometry { // i
 final class io.data2viz.geojson/MultiPolygon : io.data2viz.geojson/Geometry { // io.data2viz.geojson/MultiPolygon|null[0]
     constructor <init>() // io.data2viz.geojson/MultiPolygon.<init>|<init>(){}[0]
     constructor <init>(kotlin.collections/List<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>>) // io.data2viz.geojson/MultiPolygon.<init>|<init>(kotlin.collections.List<kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>>){}[0]
+    constructor <init>(kotlin/Array<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>>) // io.data2viz.geojson/MultiPolygon.<init>|<init>(kotlin.Array<kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>>){}[0]
     constructor <init>(kotlin/Array<kotlin/Array<kotlin/Array<kotlin/DoubleArray>>>) // io.data2viz.geojson/MultiPolygon.<init>|<init>(kotlin.Array<kotlin.Array<kotlin.Array<kotlin.DoubleArray>>>){}[0]
 
     final val coordinates // io.data2viz.geojson/MultiPolygon.coordinates|{}coordinates[0]
@@ -311,6 +313,7 @@ final class io.data2viz.geojson/Point : io.data2viz.geojson/Geometry { // io.dat
 final class io.data2viz.geojson/Polygon : io.data2viz.geojson/Geometry { // io.data2viz.geojson/Polygon|null[0]
     constructor <init>() // io.data2viz.geojson/Polygon.<init>|<init>(){}[0]
     constructor <init>(kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
+    constructor <init>(kotlin/Array<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.Array<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
     constructor <init>(kotlin/Array<kotlin/Array<kotlin/DoubleArray>>) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.Array<kotlin.Array<kotlin.DoubleArray>>){}[0]
     constructor <init>(kotlin/Array<out io.data2viz.geojson/LngLatAlt>...) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.Array<out|io.data2viz.geojson.LngLatAlt>...){}[0]
 

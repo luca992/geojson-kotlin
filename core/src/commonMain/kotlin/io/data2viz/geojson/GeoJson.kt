@@ -25,6 +25,7 @@ data class Feature(
     val geometry: Geometry? = null,
     @SerialName("id") val idPrimitive: JsonPrimitive? = null
 ) : GeoJsonObject {
+    constructor(geometry: Geometry) : this(geometry = geometry, propertiesObject = null)
     val id: Any? get() = idPrimitive?.toAnyValue()
     val properties: Any? get() = propertiesObject?.toAnyValue()
 }
@@ -91,6 +92,7 @@ data class Polygon(
     constructor() : this(emptyList())
     constructor(vararg ring: LngLatAlt) : this(listOf(ring.toList()))
     constructor(coordinates: Array<Array<DoubleArray>>) : this(coordinates.map { ring -> ring.map { LngLatAlt(it) } })
+    constructor(rings: Array<List<LngLatAlt>>) : this(rings.toList())
 
     val hasHoles: Boolean get() = coordinates.size > 1
     val exteriorRing: List<LngLatAlt> get() = coordinates.first()
@@ -110,6 +112,7 @@ data class MultiPolygon(
     constructor(coordinates: Array<Array<Array<DoubleArray>>>) : this(coordinates.map { polygon ->
         polygon.map { ring -> ring.map { LngLatAlt(it) } }
     })
+    constructor(polygons: Array<List<List<LngLatAlt>>>) : this(polygons.toList())
 
     fun add(polygon: Polygon): MultiPolygon = MultiPolygon(coordinates + listOf(polygon.coordinates))
 }
