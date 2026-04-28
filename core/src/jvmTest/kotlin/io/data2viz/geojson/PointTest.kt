@@ -1,15 +1,7 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.GeoJsonObject
-import io.data2viz.geojson.jackson.LngLatAlt
-import io.data2viz.geojson.jackson.Point
-import io.data2viz.geojson.jackson.geoJson
 import kotlinx.serialization.encodeToString
-import org.junit.Test
-
-import java.util.Arrays
-
-import org.junit.Assert.*
+import kotlin.test.*
 
 class PointTest {
 
@@ -31,7 +23,7 @@ class PointTest {
         assertNotNull(value)
         assertTrue(value is Point)
         val point = value as Point
-        assertLngLatAlt(100.0, 5.0, java.lang.Double.NaN, point.coordinates)
+        assertLngLatAlt(100.0, 5.0, Double.NaN, point.coordinates)
     }
 
     @Test
@@ -97,11 +89,11 @@ class PointTest {
         ) {
             assertEquals(expectedLongitude, point.longitude, 0.00001)
             assertEquals(expectedLatitude, point.latitude, 0.00001)
-            if (java.lang.Double.isNaN(expectedAltitude)) {
+            if (expectedAltitude.isNaN()) {
                 assertFalse(point.hasAltitude())
             } else {
                 assertEquals(expectedAltitude, point.getAltitude(), 0.00001)
-                assertTrue(Arrays.equals(expectedAdditionalElements, point.getAdditionalElements()))
+                assertTrue(expectedAdditionalElements.contentEquals(point.getAdditionalElements()))
             }
         }
     }

@@ -1,8 +1,6 @@
-package io.data2viz.geojson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.jackson.CrsType
-import org.junit.Test
-import org.junit.Assert.assertEquals
+import kotlin.test.*
 
 class ToStringTest {
 
@@ -13,7 +11,7 @@ class ToStringTest {
 
     @Test
     fun itShouldToStringFeature() {
-        assertEquals("Feature(properties=null, geometry=null, id=null)", Feature().toString())
+        assertEquals("Feature(propertiesObject=null, geometry=null, idPrimitive=null)", Feature().toString())
     }
 
     @Test

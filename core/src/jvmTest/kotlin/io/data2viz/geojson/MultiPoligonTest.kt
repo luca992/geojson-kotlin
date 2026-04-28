@@ -1,14 +1,7 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.GeoJsonObject
-import io.data2viz.geojson.jackson.LngLatAlt
-import io.data2viz.geojson.jackson.MultiPolygon
-import io.data2viz.geojson.jackson.Polygon
-import io.data2viz.geojson.jackson.geoJson
 import kotlinx.serialization.encodeToString
-import org.junit.Test
-
-import org.junit.Assert.assertEquals
+import kotlin.test.*
 
 class MultiPoligonTest {
 

@@ -1,12 +1,8 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.Crs
-import io.data2viz.geojson.jackson.GeoJsonObject
-import io.data2viz.geojson.jackson.Point
-import org.junit.Test
-
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 class CrsTest {
 

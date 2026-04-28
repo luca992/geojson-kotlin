@@ -1,6 +1,5 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.LngLatAlt
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor

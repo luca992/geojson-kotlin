@@ -1,17 +1,15 @@
-package io.data2viz.geojson.jackson
+package io.data2viz.geojson
 
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.JsonObject
-import org.junit.Test
-
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import kotlin.test.*
 
 class FeatureTest {
 
+
     private val testObject = Feature(
         geometry = Point(100.0, 0.0),
-        properties = JsonObject(emptyMap())
+        propertiesObject = JsonObject(emptyMap())
     )
 
     @Test

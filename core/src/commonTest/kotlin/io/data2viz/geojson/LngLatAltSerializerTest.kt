@@ -1,10 +1,7 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.LngLatAlt
-import io.data2viz.geojson.jackson.geoJson
 import kotlinx.serialization.json.JsonElement
-import org.junit.Assert
-import org.junit.Test
+import kotlin.test.*
 
 class LngLatAltSerializerTest {
 
@@ -16,6 +13,6 @@ class LngLatAltSerializerTest {
             JsonElement.serializer(),
             geoJson.encodeToJsonElement(LngLatAltSerializer, position)
         )
-        Assert.assertEquals(correctJson, producedJson)
+        assertEquals(correctJson, producedJson)
     }
 }

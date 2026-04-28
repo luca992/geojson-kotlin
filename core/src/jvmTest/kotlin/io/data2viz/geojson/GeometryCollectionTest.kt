@@ -1,10 +1,7 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.*
 import kotlinx.serialization.encodeToString
-import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.*
 
 class GeometryCollectionTest {
 

@@ -1,6 +1,4 @@
-package io.data2viz.geojson.jackson.jackson
-
-import io.data2viz.geojson.jackson.LngLatAlt
+package io.data2viz.geojson
 
 object MockData {
 

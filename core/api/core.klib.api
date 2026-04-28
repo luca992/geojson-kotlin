@@ -1,168 +1,475 @@
 // Klib ABI Dump
-// Targets: [iosArm64, iosSimulatorArm64, iosX64, js]
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, linuxArm64, linuxX64, macosArm64, macosX64, mingwX64, tvosArm64, tvosSimulatorArm64, wasmJs, watchosArm32, watchosArm64, watchosSimulatorArm64]
 // Rendering settings:
 // - Signature version: 2
 // - Show manifest properties: true
 // - Show declarations: true
 
 // Library unique name: <io.data2viz.geojson:core>
-abstract interface io.data2viz.geojson/GeoJsonObject // io.data2viz.geojson/GeoJsonObject|null[0]
+final enum class io.data2viz.geojson/CrsType : kotlin/Enum<io.data2viz.geojson/CrsType> { // io.data2viz.geojson/CrsType|null[0]
+    enum entry LINK // io.data2viz.geojson/CrsType.LINK|null[0]
+    enum entry NAME // io.data2viz.geojson/CrsType.NAME|null[0]
+
+    final val entries // io.data2viz.geojson/CrsType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.data2viz.geojson/CrsType> // io.data2viz.geojson/CrsType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun toValue(): kotlin/String // io.data2viz.geojson/CrsType.toValue|toValue(){}[0]
+    final fun valueOf(kotlin/String): io.data2viz.geojson/CrsType // io.data2viz.geojson/CrsType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.data2viz.geojson/CrsType> // io.data2viz.geojson/CrsType.values|values#static(){}[0]
+
+    final object Companion { // io.data2viz.geojson/CrsType.Companion|null[0]
+        final fun forValue(kotlin/String): io.data2viz.geojson/CrsType // io.data2viz.geojson/CrsType.Companion.forValue|forValue(kotlin.String){}[0]
+    }
+}
 
 abstract interface io.data2viz.geojson/Geometry : io.data2viz.geojson/GeoJsonObject // io.data2viz.geojson/Geometry|null[0]
 
+sealed interface io.data2viz.geojson/GeoJsonObject { // io.data2viz.geojson/GeoJsonObject|null[0]
+    abstract var bbox // io.data2viz.geojson/GeoJsonObject.bbox|{}bbox[0]
+        abstract fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/GeoJsonObject.bbox.<get-bbox>|<get-bbox>(){}[0]
+        abstract fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/GeoJsonObject.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    abstract var crs // io.data2viz.geojson/GeoJsonObject.crs|{}crs[0]
+        abstract fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/GeoJsonObject.crs.<get-crs>|<get-crs>(){}[0]
+        abstract fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/GeoJsonObject.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // io.data2viz.geojson/GeoJsonObject.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/GeoJsonObject> // io.data2viz.geojson/GeoJsonObject.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // io.data2viz.geojson/GeoJsonObject.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+final class io.data2viz.geojson/Crs { // io.data2viz.geojson/Crs|null[0]
+    constructor <init>(io.data2viz.geojson/CrsType? = ..., kotlin.collections/Map<kotlin/String, kotlin/Any>? = ...) // io.data2viz.geojson/Crs.<init>|<init>(io.data2viz.geojson.CrsType?;kotlin.collections.Map<kotlin.String,kotlin.Any>?){}[0]
+
+    final var properties // io.data2viz.geojson/Crs.properties|{}properties[0]
+        final fun <get-properties>(): kotlin.collections/Map<kotlin/String, kotlin/Any>? // io.data2viz.geojson/Crs.properties.<get-properties>|<get-properties>(){}[0]
+        final fun <set-properties>(kotlin.collections/Map<kotlin/String, kotlin/Any>?) // io.data2viz.geojson/Crs.properties.<set-properties>|<set-properties>(kotlin.collections.Map<kotlin.String,kotlin.Any>?){}[0]
+    final var type // io.data2viz.geojson/Crs.type|{}type[0]
+        final fun <get-type>(): io.data2viz.geojson/CrsType? // io.data2viz.geojson/Crs.type.<get-type>|<get-type>(){}[0]
+        final fun <set-type>(io.data2viz.geojson/CrsType?) // io.data2viz.geojson/Crs.type.<set-type>|<set-type>(io.data2viz.geojson.CrsType?){}[0]
+
+    final fun component1(): io.data2viz.geojson/CrsType? // io.data2viz.geojson/Crs.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, kotlin/Any>? // io.data2viz.geojson/Crs.component2|component2(){}[0]
+    final fun copy(io.data2viz.geojson/CrsType? = ..., kotlin.collections/Map<kotlin/String, kotlin/Any>? = ...): io.data2viz.geojson/Crs // io.data2viz.geojson/Crs.copy|copy(io.data2viz.geojson.CrsType?;kotlin.collections.Map<kotlin.String,kotlin.Any>?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/Crs.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.data2viz.geojson/Crs.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.data2viz.geojson/Crs.toString|toString(){}[0]
+}
+
 final class io.data2viz.geojson/Feature : io.data2viz.geojson/GeoJsonObject { // io.data2viz.geojson/Feature|null[0]
-    constructor <init>(io.data2viz.geojson/Geometry, kotlin/Any? = ..., kotlin/Any? = ...) // io.data2viz.geojson/Feature.<init>|<init>(io.data2viz.geojson.Geometry;kotlin.Any?;kotlin.Any?){}[0]
+    constructor <init>(kotlinx.serialization.json/JsonObject? = ..., io.data2viz.geojson/Geometry? = ..., kotlinx.serialization.json/JsonPrimitive? = ...) // io.data2viz.geojson/Feature.<init>|<init>(kotlinx.serialization.json.JsonObject?;io.data2viz.geojson.Geometry?;kotlinx.serialization.json.JsonPrimitive?){}[0]
 
     final val geometry // io.data2viz.geojson/Feature.geometry|{}geometry[0]
-        final fun <get-geometry>(): io.data2viz.geojson/Geometry // io.data2viz.geojson/Feature.geometry.<get-geometry>|<get-geometry>(){}[0]
+        final fun <get-geometry>(): io.data2viz.geojson/Geometry? // io.data2viz.geojson/Feature.geometry.<get-geometry>|<get-geometry>(){}[0]
     final val id // io.data2viz.geojson/Feature.id|{}id[0]
         final fun <get-id>(): kotlin/Any? // io.data2viz.geojson/Feature.id.<get-id>|<get-id>(){}[0]
+    final val idPrimitive // io.data2viz.geojson/Feature.idPrimitive|{}idPrimitive[0]
+        final fun <get-idPrimitive>(): kotlinx.serialization.json/JsonPrimitive? // io.data2viz.geojson/Feature.idPrimitive.<get-idPrimitive>|<get-idPrimitive>(){}[0]
     final val properties // io.data2viz.geojson/Feature.properties|{}properties[0]
         final fun <get-properties>(): kotlin/Any? // io.data2viz.geojson/Feature.properties.<get-properties>|<get-properties>(){}[0]
+    final val propertiesObject // io.data2viz.geojson/Feature.propertiesObject|{}propertiesObject[0]
+        final fun <get-propertiesObject>(): kotlinx.serialization.json/JsonObject? // io.data2viz.geojson/Feature.propertiesObject.<get-propertiesObject>|<get-propertiesObject>(){}[0]
 
-    final fun component1(): io.data2viz.geojson/Geometry // io.data2viz.geojson/Feature.component1|component1(){}[0]
-    final fun component2(): kotlin/Any? // io.data2viz.geojson/Feature.component2|component2(){}[0]
-    final fun component3(): kotlin/Any? // io.data2viz.geojson/Feature.component3|component3(){}[0]
-    final fun copy(io.data2viz.geojson/Geometry = ..., kotlin/Any? = ..., kotlin/Any? = ...): io.data2viz.geojson/Feature // io.data2viz.geojson/Feature.copy|copy(io.data2viz.geojson.Geometry;kotlin.Any?;kotlin.Any?){}[0]
+    final var bbox // io.data2viz.geojson/Feature.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/Feature.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/Feature.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/Feature.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/Feature.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/Feature.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonObject? // io.data2viz.geojson/Feature.component1|component1(){}[0]
+    final fun component2(): io.data2viz.geojson/Geometry? // io.data2viz.geojson/Feature.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonPrimitive? // io.data2viz.geojson/Feature.component3|component3(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonObject? = ..., io.data2viz.geojson/Geometry? = ..., kotlinx.serialization.json/JsonPrimitive? = ...): io.data2viz.geojson/Feature // io.data2viz.geojson/Feature.copy|copy(kotlinx.serialization.json.JsonObject?;io.data2viz.geojson.Geometry?;kotlinx.serialization.json.JsonPrimitive?){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/Feature.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/Feature.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/Feature.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/Feature> { // io.data2viz.geojson/Feature.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/Feature.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/Feature.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/Feature.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/Feature // io.data2viz.geojson/Feature.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/Feature) // io.data2viz.geojson/Feature.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.Feature){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/Feature.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/Feature.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/Feature> // io.data2viz.geojson/Feature.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/FeatureCollection : io.data2viz.geojson/GeoJsonObject { // io.data2viz.geojson/FeatureCollection|null[0]
+    constructor <init>(kotlin.collections/List<io.data2viz.geojson/Feature> = ...) // io.data2viz.geojson/FeatureCollection.<init>|<init>(kotlin.collections.List<io.data2viz.geojson.Feature>){}[0]
     constructor <init>(kotlin/Array<io.data2viz.geojson/Feature>) // io.data2viz.geojson/FeatureCollection.<init>|<init>(kotlin.Array<io.data2viz.geojson.Feature>){}[0]
 
     final val features // io.data2viz.geojson/FeatureCollection.features|{}features[0]
-        final fun <get-features>(): kotlin/Array<io.data2viz.geojson/Feature> // io.data2viz.geojson/FeatureCollection.features.<get-features>|<get-features>(){}[0]
+        final fun <get-features>(): kotlin.collections/List<io.data2viz.geojson/Feature> // io.data2viz.geojson/FeatureCollection.features.<get-features>|<get-features>(){}[0]
 
-    final fun component1(): kotlin/Array<io.data2viz.geojson/Feature> // io.data2viz.geojson/FeatureCollection.component1|component1(){}[0]
-    final fun copy(kotlin/Array<io.data2viz.geojson/Feature> = ...): io.data2viz.geojson/FeatureCollection // io.data2viz.geojson/FeatureCollection.copy|copy(kotlin.Array<io.data2viz.geojson.Feature>){}[0]
+    final var bbox // io.data2viz.geojson/FeatureCollection.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/FeatureCollection.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/FeatureCollection.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/FeatureCollection.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/FeatureCollection.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/FeatureCollection.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlin.collections/List<io.data2viz.geojson/Feature> // io.data2viz.geojson/FeatureCollection.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<io.data2viz.geojson/Feature> = ...): io.data2viz.geojson/FeatureCollection // io.data2viz.geojson/FeatureCollection.copy|copy(kotlin.collections.List<io.data2viz.geojson.Feature>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/FeatureCollection.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/FeatureCollection.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/FeatureCollection.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/FeatureCollection> { // io.data2viz.geojson/FeatureCollection.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/FeatureCollection.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/FeatureCollection.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/FeatureCollection.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/FeatureCollection // io.data2viz.geojson/FeatureCollection.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/FeatureCollection) // io.data2viz.geojson/FeatureCollection.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.FeatureCollection){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/FeatureCollection.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/FeatureCollection.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/FeatureCollection> // io.data2viz.geojson/FeatureCollection.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/FeatureProperties { // io.data2viz.geojson/FeatureProperties|null[0]
     constructor <init>() // io.data2viz.geojson/FeatureProperties.<init>|<init>(){}[0]
 
+    final var properties // io.data2viz.geojson/FeatureProperties.properties|{}properties[0]
+        final fun <get-properties>(): kotlin.collections/Map<kotlin/String, kotlin/Any?> // io.data2viz.geojson/FeatureProperties.properties.<get-properties>|<get-properties>(){}[0]
+        final fun <set-properties>(kotlin.collections/Map<kotlin/String, kotlin/Any?>) // io.data2viz.geojson/FeatureProperties.properties.<set-properties>|<set-properties>(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+
     final fun booleanProperty(kotlin/String): kotlin/Boolean // io.data2viz.geojson/FeatureProperties.booleanProperty|booleanProperty(kotlin.String){}[0]
     final fun intProperty(kotlin/String): kotlin/Int // io.data2viz.geojson/FeatureProperties.intProperty|intProperty(kotlin.String){}[0]
     final fun stringProperty(kotlin/String): kotlin/String // io.data2viz.geojson/FeatureProperties.stringProperty|stringProperty(kotlin.String){}[0]
-
-    // Targets: [js]
-    final var properties // io.data2viz.geojson/FeatureProperties.properties|{}properties[0]
-        final fun <get-properties>(): dynamic // io.data2viz.geojson/FeatureProperties.properties.<get-properties>|<get-properties>(){}[0]
-        final fun <set-properties>(dynamic) // io.data2viz.geojson/FeatureProperties.properties.<set-properties>|<set-properties>(<dynamic>){}[0]
 }
 
 final class io.data2viz.geojson/GeometryCollection : io.data2viz.geojson/Geometry { // io.data2viz.geojson/GeometryCollection|null[0]
+    constructor <init>(kotlin.collections/List<io.data2viz.geojson/Geometry> = ...) // io.data2viz.geojson/GeometryCollection.<init>|<init>(kotlin.collections.List<io.data2viz.geojson.Geometry>){}[0]
     constructor <init>(kotlin/Array<io.data2viz.geojson/Geometry>) // io.data2viz.geojson/GeometryCollection.<init>|<init>(kotlin.Array<io.data2viz.geojson.Geometry>){}[0]
 
     final val geometries // io.data2viz.geojson/GeometryCollection.geometries|{}geometries[0]
-        final fun <get-geometries>(): kotlin/Array<io.data2viz.geojson/Geometry> // io.data2viz.geojson/GeometryCollection.geometries.<get-geometries>|<get-geometries>(){}[0]
+        final fun <get-geometries>(): kotlin.collections/List<io.data2viz.geojson/Geometry> // io.data2viz.geojson/GeometryCollection.geometries.<get-geometries>|<get-geometries>(){}[0]
 
-    final fun component1(): kotlin/Array<io.data2viz.geojson/Geometry> // io.data2viz.geojson/GeometryCollection.component1|component1(){}[0]
-    final fun copy(kotlin/Array<io.data2viz.geojson/Geometry> = ...): io.data2viz.geojson/GeometryCollection // io.data2viz.geojson/GeometryCollection.copy|copy(kotlin.Array<io.data2viz.geojson.Geometry>){}[0]
+    final var bbox // io.data2viz.geojson/GeometryCollection.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/GeometryCollection.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/GeometryCollection.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/GeometryCollection.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/GeometryCollection.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/GeometryCollection.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun add(io.data2viz.geojson/GeoJsonObject): io.data2viz.geojson/GeometryCollection // io.data2viz.geojson/GeometryCollection.add|add(io.data2viz.geojson.GeoJsonObject){}[0]
+    final fun component1(): kotlin.collections/List<io.data2viz.geojson/Geometry> // io.data2viz.geojson/GeometryCollection.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<io.data2viz.geojson/Geometry> = ...): io.data2viz.geojson/GeometryCollection // io.data2viz.geojson/GeometryCollection.copy|copy(kotlin.collections.List<io.data2viz.geojson.Geometry>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/GeometryCollection.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/GeometryCollection.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/GeometryCollection.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/GeometryCollection> { // io.data2viz.geojson/GeometryCollection.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/GeometryCollection.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/GeometryCollection.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/GeometryCollection.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/GeometryCollection // io.data2viz.geojson/GeometryCollection.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/GeometryCollection) // io.data2viz.geojson/GeometryCollection.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.GeometryCollection){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/GeometryCollection.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/GeometryCollection.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/GeometryCollection> // io.data2viz.geojson/GeometryCollection.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/LineString : io.data2viz.geojson/Geometry { // io.data2viz.geojson/LineString|null[0]
+    constructor <init>(kotlin.collections/List<io.data2viz.geojson/LngLatAlt>) // io.data2viz.geojson/LineString.<init>|<init>(kotlin.collections.List<io.data2viz.geojson.LngLatAlt>){}[0]
     constructor <init>(kotlin/Array<kotlin/DoubleArray>) // io.data2viz.geojson/LineString.<init>|<init>(kotlin.Array<kotlin.DoubleArray>){}[0]
+    constructor <init>(kotlin/Array<out io.data2viz.geojson/LngLatAlt>...) // io.data2viz.geojson/LineString.<init>|<init>(kotlin.Array<out|io.data2viz.geojson.LngLatAlt>...){}[0]
 
     final val coordinates // io.data2viz.geojson/LineString.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/Array<kotlin/DoubleArray> // io.data2viz.geojson/LineString.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/LineString.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
 
-    final fun component1(): kotlin/Array<kotlin/DoubleArray> // io.data2viz.geojson/LineString.component1|component1(){}[0]
-    final fun copy(kotlin/Array<kotlin/DoubleArray> = ...): io.data2viz.geojson/LineString // io.data2viz.geojson/LineString.copy|copy(kotlin.Array<kotlin.DoubleArray>){}[0]
+    final var bbox // io.data2viz.geojson/LineString.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/LineString.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/LineString.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/LineString.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/LineString.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/LineString.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/LineString.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<io.data2viz.geojson/LngLatAlt> = ...): io.data2viz.geojson/LineString // io.data2viz.geojson/LineString.copy|copy(kotlin.collections.List<io.data2viz.geojson.LngLatAlt>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/LineString.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/LineString.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/LineString.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/LineString> { // io.data2viz.geojson/LineString.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/LineString.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/LineString.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/LineString.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/LineString // io.data2viz.geojson/LineString.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/LineString) // io.data2viz.geojson/LineString.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.LineString){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/LineString.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/LineString.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/LineString> // io.data2viz.geojson/LineString.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class io.data2viz.geojson/LngLatAlt { // io.data2viz.geojson/LngLatAlt|null[0]
+    constructor <init>(kotlin/Double, kotlin/Double, kotlin/Double = ..., kotlin/DoubleArray...) // io.data2viz.geojson/LngLatAlt.<init>|<init>(kotlin.Double;kotlin.Double;kotlin.Double;kotlin.DoubleArray...){}[0]
+    constructor <init>(kotlin/DoubleArray) // io.data2viz.geojson/LngLatAlt.<init>|<init>(kotlin.DoubleArray){}[0]
+
+    final val alt // io.data2viz.geojson/LngLatAlt.alt|{}alt[0]
+        final fun <get-alt>(): kotlin/Double? // io.data2viz.geojson/LngLatAlt.alt.<get-alt>|<get-alt>(){}[0]
+    final val lat // io.data2viz.geojson/LngLatAlt.lat|{}lat[0]
+        final fun <get-lat>(): kotlin/Double // io.data2viz.geojson/LngLatAlt.lat.<get-lat>|<get-lat>(){}[0]
+    final val lon // io.data2viz.geojson/LngLatAlt.lon|{}lon[0]
+        final fun <get-lon>(): kotlin/Double // io.data2viz.geojson/LngLatAlt.lon.<get-lon>|<get-lon>(){}[0]
+    final val size // io.data2viz.geojson/LngLatAlt.size|{}size[0]
+        final fun <get-size>(): kotlin/Int // io.data2viz.geojson/LngLatAlt.size.<get-size>|<get-size>(){}[0]
+
+    final var latitude // io.data2viz.geojson/LngLatAlt.latitude|{}latitude[0]
+        final fun <get-latitude>(): kotlin/Double // io.data2viz.geojson/LngLatAlt.latitude.<get-latitude>|<get-latitude>(){}[0]
+        final fun <set-latitude>(kotlin/Double) // io.data2viz.geojson/LngLatAlt.latitude.<set-latitude>|<set-latitude>(kotlin.Double){}[0]
+    final var longitude // io.data2viz.geojson/LngLatAlt.longitude|{}longitude[0]
+        final fun <get-longitude>(): kotlin/Double // io.data2viz.geojson/LngLatAlt.longitude.<get-longitude>|<get-longitude>(){}[0]
+        final fun <set-longitude>(kotlin/Double) // io.data2viz.geojson/LngLatAlt.longitude.<set-longitude>|<set-longitude>(kotlin.Double){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/LngLatAlt.equals|equals(kotlin.Any?){}[0]
+    final fun get(kotlin/Int): kotlin/Double // io.data2viz.geojson/LngLatAlt.get|get(kotlin.Int){}[0]
+    final fun getAdditionalElements(): kotlin/DoubleArray // io.data2viz.geojson/LngLatAlt.getAdditionalElements|getAdditionalElements(){}[0]
+    final fun getAltitude(): kotlin/Double // io.data2viz.geojson/LngLatAlt.getAltitude|getAltitude(){}[0]
+    final fun hasAltitude(): kotlin/Boolean // io.data2viz.geojson/LngLatAlt.hasAltitude|hasAltitude(){}[0]
+    final fun hashCode(): kotlin/Int // io.data2viz.geojson/LngLatAlt.hashCode|hashCode(){}[0]
+    final fun setAdditionalElements(kotlin/DoubleArray...) // io.data2viz.geojson/LngLatAlt.setAdditionalElements|setAdditionalElements(kotlin.DoubleArray...){}[0]
+    final fun setAltitude(kotlin/Double) // io.data2viz.geojson/LngLatAlt.setAltitude|setAltitude(kotlin.Double){}[0]
+    final fun toDoubleArray(): kotlin/DoubleArray // io.data2viz.geojson/LngLatAlt.toDoubleArray|toDoubleArray(){}[0]
+    final fun toString(): kotlin/String // io.data2viz.geojson/LngLatAlt.toString|toString(){}[0]
 }
 
 final class io.data2viz.geojson/MultiLineString : io.data2viz.geojson/Geometry { // io.data2viz.geojson/MultiLineString|null[0]
+    constructor <init>(kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>) // io.data2viz.geojson/MultiLineString.<init>|<init>(kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
     constructor <init>(kotlin/Array<kotlin/Array<kotlin/DoubleArray>>) // io.data2viz.geojson/MultiLineString.<init>|<init>(kotlin.Array<kotlin.Array<kotlin.DoubleArray>>){}[0]
+    constructor <init>(kotlin/Array<out kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>...) // io.data2viz.geojson/MultiLineString.<init>|<init>(kotlin.Array<out|kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>...){}[0]
 
     final val coordinates // io.data2viz.geojson/MultiLineString.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/Array<kotlin/Array<kotlin/DoubleArray>> // io.data2viz.geojson/MultiLineString.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> // io.data2viz.geojson/MultiLineString.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
 
-    final fun component1(): kotlin/Array<kotlin/Array<kotlin/DoubleArray>> // io.data2viz.geojson/MultiLineString.component1|component1(){}[0]
-    final fun copy(kotlin/Array<kotlin/Array<kotlin/DoubleArray>> = ...): io.data2viz.geojson/MultiLineString // io.data2viz.geojson/MultiLineString.copy|copy(kotlin.Array<kotlin.Array<kotlin.DoubleArray>>){}[0]
+    final var bbox // io.data2viz.geojson/MultiLineString.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/MultiLineString.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/MultiLineString.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/MultiLineString.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/MultiLineString.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/MultiLineString.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> // io.data2viz.geojson/MultiLineString.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> = ...): io.data2viz.geojson/MultiLineString // io.data2viz.geojson/MultiLineString.copy|copy(kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/MultiLineString.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/MultiLineString.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/MultiLineString.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/MultiLineString> { // io.data2viz.geojson/MultiLineString.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/MultiLineString.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/MultiLineString.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/MultiLineString.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/MultiLineString // io.data2viz.geojson/MultiLineString.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/MultiLineString) // io.data2viz.geojson/MultiLineString.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.MultiLineString){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/MultiLineString.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/MultiLineString.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/MultiLineString> // io.data2viz.geojson/MultiLineString.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/MultiPoint : io.data2viz.geojson/Geometry { // io.data2viz.geojson/MultiPoint|null[0]
+    constructor <init>(kotlin.collections/List<io.data2viz.geojson/LngLatAlt>) // io.data2viz.geojson/MultiPoint.<init>|<init>(kotlin.collections.List<io.data2viz.geojson.LngLatAlt>){}[0]
     constructor <init>(kotlin/Array<kotlin/DoubleArray>) // io.data2viz.geojson/MultiPoint.<init>|<init>(kotlin.Array<kotlin.DoubleArray>){}[0]
+    constructor <init>(kotlin/Array<out io.data2viz.geojson/LngLatAlt>...) // io.data2viz.geojson/MultiPoint.<init>|<init>(kotlin.Array<out|io.data2viz.geojson.LngLatAlt>...){}[0]
 
     final val coordinates // io.data2viz.geojson/MultiPoint.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/Array<kotlin/DoubleArray> // io.data2viz.geojson/MultiPoint.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/MultiPoint.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
 
-    final fun component1(): kotlin/Array<kotlin/DoubleArray> // io.data2viz.geojson/MultiPoint.component1|component1(){}[0]
-    final fun copy(kotlin/Array<kotlin/DoubleArray> = ...): io.data2viz.geojson/MultiPoint // io.data2viz.geojson/MultiPoint.copy|copy(kotlin.Array<kotlin.DoubleArray>){}[0]
+    final var bbox // io.data2viz.geojson/MultiPoint.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/MultiPoint.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/MultiPoint.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/MultiPoint.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/MultiPoint.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/MultiPoint.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/MultiPoint.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<io.data2viz.geojson/LngLatAlt> = ...): io.data2viz.geojson/MultiPoint // io.data2viz.geojson/MultiPoint.copy|copy(kotlin.collections.List<io.data2viz.geojson.LngLatAlt>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/MultiPoint.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/MultiPoint.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/MultiPoint.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/MultiPoint> { // io.data2viz.geojson/MultiPoint.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/MultiPoint.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/MultiPoint.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/MultiPoint.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/MultiPoint // io.data2viz.geojson/MultiPoint.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/MultiPoint) // io.data2viz.geojson/MultiPoint.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.MultiPoint){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/MultiPoint.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/MultiPoint.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/MultiPoint> // io.data2viz.geojson/MultiPoint.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/MultiPolygon : io.data2viz.geojson/Geometry { // io.data2viz.geojson/MultiPolygon|null[0]
+    constructor <init>() // io.data2viz.geojson/MultiPolygon.<init>|<init>(){}[0]
+    constructor <init>(kotlin.collections/List<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>>) // io.data2viz.geojson/MultiPolygon.<init>|<init>(kotlin.collections.List<kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>>){}[0]
     constructor <init>(kotlin/Array<kotlin/Array<kotlin/Array<kotlin/DoubleArray>>>) // io.data2viz.geojson/MultiPolygon.<init>|<init>(kotlin.Array<kotlin.Array<kotlin.Array<kotlin.DoubleArray>>>){}[0]
 
     final val coordinates // io.data2viz.geojson/MultiPolygon.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/Array<kotlin/Array<kotlin/Array<kotlin/DoubleArray>>> // io.data2viz.geojson/MultiPolygon.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): kotlin.collections/List<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>> // io.data2viz.geojson/MultiPolygon.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
 
-    final fun component1(): kotlin/Array<kotlin/Array<kotlin/Array<kotlin/DoubleArray>>> // io.data2viz.geojson/MultiPolygon.component1|component1(){}[0]
-    final fun copy(kotlin/Array<kotlin/Array<kotlin/Array<kotlin/DoubleArray>>> = ...): io.data2viz.geojson/MultiPolygon // io.data2viz.geojson/MultiPolygon.copy|copy(kotlin.Array<kotlin.Array<kotlin.Array<kotlin.DoubleArray>>>){}[0]
+    final var bbox // io.data2viz.geojson/MultiPolygon.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/MultiPolygon.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/MultiPolygon.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/MultiPolygon.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/MultiPolygon.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/MultiPolygon.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun add(io.data2viz.geojson/Polygon): io.data2viz.geojson/MultiPolygon // io.data2viz.geojson/MultiPolygon.add|add(io.data2viz.geojson.Polygon){}[0]
+    final fun component1(): kotlin.collections/List<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>> // io.data2viz.geojson/MultiPolygon.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>> = ...): io.data2viz.geojson/MultiPolygon // io.data2viz.geojson/MultiPolygon.copy|copy(kotlin.collections.List<kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/MultiPolygon.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/MultiPolygon.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/MultiPolygon.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/MultiPolygon> { // io.data2viz.geojson/MultiPolygon.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/MultiPolygon.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/MultiPolygon.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/MultiPolygon.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/MultiPolygon // io.data2viz.geojson/MultiPolygon.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/MultiPolygon) // io.data2viz.geojson/MultiPolygon.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.MultiPolygon){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/MultiPolygon.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/MultiPolygon.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/MultiPolygon> // io.data2viz.geojson/MultiPolygon.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/Point : io.data2viz.geojson/Geometry { // io.data2viz.geojson/Point|null[0]
+    constructor <init>(io.data2viz.geojson/LngLatAlt) // io.data2viz.geojson/Point.<init>|<init>(io.data2viz.geojson.LngLatAlt){}[0]
+    constructor <init>(kotlin/Double, kotlin/Double) // io.data2viz.geojson/Point.<init>|<init>(kotlin.Double;kotlin.Double){}[0]
+    constructor <init>(kotlin/Double, kotlin/Double, kotlin/Double) // io.data2viz.geojson/Point.<init>|<init>(kotlin.Double;kotlin.Double;kotlin.Double){}[0]
+    constructor <init>(kotlin/Double, kotlin/Double, kotlin/Double, kotlin/DoubleArray...) // io.data2viz.geojson/Point.<init>|<init>(kotlin.Double;kotlin.Double;kotlin.Double;kotlin.DoubleArray...){}[0]
     constructor <init>(kotlin/DoubleArray) // io.data2viz.geojson/Point.<init>|<init>(kotlin.DoubleArray){}[0]
 
     final val coordinates // io.data2viz.geojson/Point.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/DoubleArray // io.data2viz.geojson/Point.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): io.data2viz.geojson/LngLatAlt // io.data2viz.geojson/Point.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
 
-    final fun component1(): kotlin/DoubleArray // io.data2viz.geojson/Point.component1|component1(){}[0]
-    final fun copy(kotlin/DoubleArray = ...): io.data2viz.geojson/Point // io.data2viz.geojson/Point.copy|copy(kotlin.DoubleArray){}[0]
+    final var bbox // io.data2viz.geojson/Point.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/Point.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/Point.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/Point.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/Point.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/Point.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): io.data2viz.geojson/LngLatAlt // io.data2viz.geojson/Point.component1|component1(){}[0]
+    final fun copy(io.data2viz.geojson/LngLatAlt = ...): io.data2viz.geojson/Point // io.data2viz.geojson/Point.copy|copy(io.data2viz.geojson.LngLatAlt){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/Point.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/Point.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/Point.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/Point> { // io.data2viz.geojson/Point.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/Point.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/Point.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/Point.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/Point // io.data2viz.geojson/Point.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/Point) // io.data2viz.geojson/Point.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.Point){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/Point.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/Point> // io.data2viz.geojson/Point.Companion.serializer|serializer(){}[0]
+    }
 }
 
 final class io.data2viz.geojson/Polygon : io.data2viz.geojson/Geometry { // io.data2viz.geojson/Polygon|null[0]
+    constructor <init>() // io.data2viz.geojson/Polygon.<init>|<init>(){}[0]
+    constructor <init>(kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>>) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
     constructor <init>(kotlin/Array<kotlin/Array<kotlin/DoubleArray>>) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.Array<kotlin.Array<kotlin.DoubleArray>>){}[0]
+    constructor <init>(kotlin/Array<out io.data2viz.geojson/LngLatAlt>...) // io.data2viz.geojson/Polygon.<init>|<init>(kotlin.Array<out|io.data2viz.geojson.LngLatAlt>...){}[0]
 
     final val coordinates // io.data2viz.geojson/Polygon.coordinates|{}coordinates[0]
-        final fun <get-coordinates>(): kotlin/Array<kotlin/Array<kotlin/DoubleArray>> // io.data2viz.geojson/Polygon.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+        final fun <get-coordinates>(): kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> // io.data2viz.geojson/Polygon.coordinates.<get-coordinates>|<get-coordinates>(){}[0]
+    final val exteriorRing // io.data2viz.geojson/Polygon.exteriorRing|{}exteriorRing[0]
+        final fun <get-exteriorRing>(): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/Polygon.exteriorRing.<get-exteriorRing>|<get-exteriorRing>(){}[0]
     final val hasHoles // io.data2viz.geojson/Polygon.hasHoles|{}hasHoles[0]
         final fun <get-hasHoles>(): kotlin/Boolean // io.data2viz.geojson/Polygon.hasHoles.<get-hasHoles>|<get-hasHoles>(){}[0]
+    final val interiorRings // io.data2viz.geojson/Polygon.interiorRings|{}interiorRings[0]
+        final fun <get-interiorRings>(): kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> // io.data2viz.geojson/Polygon.interiorRings.<get-interiorRings>|<get-interiorRings>(){}[0]
 
-    final fun component1(): kotlin/Array<kotlin/Array<kotlin/DoubleArray>> // io.data2viz.geojson/Polygon.component1|component1(){}[0]
-    final fun copy(kotlin/Array<kotlin/Array<kotlin/DoubleArray>> = ...): io.data2viz.geojson/Polygon // io.data2viz.geojson/Polygon.copy|copy(kotlin.Array<kotlin.Array<kotlin.DoubleArray>>){}[0]
+    final var bbox // io.data2viz.geojson/Polygon.bbox|{}bbox[0]
+        final fun <get-bbox>(): kotlin/DoubleArray? // io.data2viz.geojson/Polygon.bbox.<get-bbox>|<get-bbox>(){}[0]
+        final fun <set-bbox>(kotlin/DoubleArray?) // io.data2viz.geojson/Polygon.bbox.<set-bbox>|<set-bbox>(kotlin.DoubleArray?){}[0]
+    final var crs // io.data2viz.geojson/Polygon.crs|{}crs[0]
+        final fun <get-crs>(): io.data2viz.geojson/Crs? // io.data2viz.geojson/Polygon.crs.<get-crs>|<get-crs>(){}[0]
+        final fun <set-crs>(io.data2viz.geojson/Crs?) // io.data2viz.geojson/Polygon.crs.<set-crs>|<set-crs>(io.data2viz.geojson.Crs?){}[0]
+
+    final fun component1(): kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> // io.data2viz.geojson/Polygon.component1|component1(){}[0]
+    final fun copy(kotlin.collections/List<kotlin.collections/List<io.data2viz.geojson/LngLatAlt>> = ...): io.data2viz.geojson/Polygon // io.data2viz.geojson/Polygon.copy|copy(kotlin.collections.List<kotlin.collections.List<io.data2viz.geojson.LngLatAlt>>){}[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // io.data2viz.geojson/Polygon.equals|equals(kotlin.Any?){}[0]
+    final fun getInteriorRing(kotlin/Int): kotlin.collections/List<io.data2viz.geojson/LngLatAlt> // io.data2viz.geojson/Polygon.getInteriorRing|getInteriorRing(kotlin.Int){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/Polygon.hashCode|hashCode(){}[0]
     final fun toString(): kotlin/String // io.data2viz.geojson/Polygon.toString|toString(){}[0]
+    final fun withInteriorRing(kotlin.collections/List<io.data2viz.geojson/LngLatAlt>): io.data2viz.geojson/Polygon // io.data2viz.geojson/Polygon.withInteriorRing|withInteriorRing(kotlin.collections.List<io.data2viz.geojson.LngLatAlt>){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<io.data2viz.geojson/Polygon> { // io.data2viz.geojson/Polygon.$serializer|null[0]
+        final val descriptor // io.data2viz.geojson/Polygon.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/Polygon.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // io.data2viz.geojson/Polygon.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/Polygon // io.data2viz.geojson/Polygon.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/Polygon) // io.data2viz.geojson/Polygon.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.Polygon){}[0]
+    }
+
+    final object Companion { // io.data2viz.geojson/Polygon.Companion|null[0]
+        final val $childSerializers // io.data2viz.geojson/Polygon.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<io.data2viz.geojson/Polygon> // io.data2viz.geojson/Polygon.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final object io.data2viz.geojson/LngLatAltSerializer : kotlinx.serialization/KSerializer<io.data2viz.geojson/LngLatAlt> { // io.data2viz.geojson/LngLatAltSerializer|null[0]
+    final val descriptor // io.data2viz.geojson/LngLatAltSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.data2viz.geojson/LngLatAltSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): io.data2viz.geojson/LngLatAlt // io.data2viz.geojson/LngLatAltSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/LngLatAlt) // io.data2viz.geojson/LngLatAltSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.LngLatAlt){}[0]
 }
 
 final val io.data2viz.geojson/alt // io.data2viz.geojson/alt|@kotlin.DoubleArray{}alt[0]
     final fun (kotlin/DoubleArray).<get-alt>(): kotlin/Double? // io.data2viz.geojson/alt.<get-alt>|<get-alt>@kotlin.DoubleArray(){}[0]
+final val io.data2viz.geojson/geoJson // io.data2viz.geojson/geoJson|{}geoJson[0]
+    final fun <get-geoJson>(): kotlinx.serialization.json/Json // io.data2viz.geojson/geoJson.<get-geoJson>|<get-geoJson>(){}[0]
+final val io.data2viz.geojson/geoJsonModule // io.data2viz.geojson/geoJsonModule|{}geoJsonModule[0]
+    final fun <get-geoJsonModule>(): kotlinx.serialization.modules/SerializersModule // io.data2viz.geojson/geoJsonModule.<get-geoJsonModule>|<get-geoJsonModule>(){}[0]
 final val io.data2viz.geojson/lat // io.data2viz.geojson/lat|@kotlin.DoubleArray{}lat[0]
     final fun (kotlin/DoubleArray).<get-lat>(): kotlin/Double // io.data2viz.geojson/lat.<get-lat>|<get-lat>@kotlin.DoubleArray(){}[0]
 final val io.data2viz.geojson/lon // io.data2viz.geojson/lon|@kotlin.DoubleArray{}lon[0]
     final fun (kotlin/DoubleArray).<get-lon>(): kotlin/Double // io.data2viz.geojson/lon.<get-lon>|<get-lon>@kotlin.DoubleArray(){}[0]
 
+final fun (io.data2viz.geojson/GeoJsonObject).io.data2viz.geojson/toJsonString(): kotlin/String // io.data2viz.geojson/toJsonString|toJsonString@io.data2viz.geojson.GeoJsonObject(){}[0]
 final fun (kotlin/String).io.data2viz.geojson/toGeoJsonObject(): io.data2viz.geojson/GeoJsonObject // io.data2viz.geojson/toGeoJsonObject|toGeoJsonObject@kotlin.String(){}[0]
+final fun <#A: io.data2viz.geojson/GeoJsonObject> (kotlin/String).io.data2viz.geojson/decodeGeoJson(): #A // io.data2viz.geojson/decodeGeoJson|decodeGeoJson@kotlin.String(){0§<io.data2viz.geojson.GeoJsonObject>}[0]
 final fun <#A: kotlin/Any?> (kotlin/String).io.data2viz.geojson/toFeaturesAndProperties(kotlin/Function1<io.data2viz.geojson/FeatureProperties, #A>): kotlin.collections/List<kotlin/Pair<io.data2viz.geojson/Feature, #A>> // io.data2viz.geojson/toFeaturesAndProperties|toFeaturesAndProperties@kotlin.String(kotlin.Function1<io.data2viz.geojson.FeatureProperties,0:0>){0§<kotlin.Any?>}[0]
-
-// Targets: [js]
-abstract interface io.data2viz.geojson.js/Typed { // io.data2viz.geojson.js/Typed|null[0]
-    abstract val type // io.data2viz.geojson.js/Typed.type|{}type[0]
-        abstract fun <get-type>(): kotlin/String // io.data2viz.geojson.js/Typed.type.<get-type>|<get-type>(){}[0]
-}
-
-// Targets: [js]
-final fun (io.data2viz.geojson.js/Typed).io.data2viz.geojson.js/asGeoJsonObject(): io.data2viz.geojson/GeoJsonObject // io.data2viz.geojson.js/asGeoJsonObject|asGeoJsonObject@io.data2viz.geojson.js.Typed(){}[0]

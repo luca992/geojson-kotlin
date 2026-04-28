@@ -1,14 +1,7 @@
-package io.data2viz.geojson.jackson.jackson
+package io.data2viz.geojson
 
-import io.data2viz.geojson.jackson.GeoJsonObject
-import io.data2viz.geojson.jackson.LngLatAlt
-import io.data2viz.geojson.jackson.MultiPoint
-import io.data2viz.geojson.jackson.geoJson
 import kotlinx.serialization.encodeToString
-import org.junit.Test
-
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import kotlin.test.*
 
 class MultiPointTest {
 
@@ -32,7 +25,7 @@ class MultiPointTest {
         )
         assertNotNull(multiPoint)
         val coordinates = multiPoint.coordinates
-        PointTest.assertLngLatAlt(100.0, 0.0, java.lang.Double.NaN, coordinates[0])
-        PointTest.assertLngLatAlt(101.0, 1.0, java.lang.Double.NaN, coordinates[1])
+        PointTest.assertLngLatAlt(100.0, 0.0, Double.NaN, coordinates[0])
+        PointTest.assertLngLatAlt(101.0, 1.0, Double.NaN, coordinates[1])
     }
 }

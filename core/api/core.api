@@ -1,28 +1,105 @@
-public final class io/data2viz/geojson/Feature : io/data2viz/geojson/GeoJsonObject {
-	public fun <init> (Lio/data2viz/geojson/Geometry;Ljava/lang/Object;Ljava/lang/Object;)V
-	public synthetic fun <init> (Lio/data2viz/geojson/Geometry;Ljava/lang/Object;Ljava/lang/Object;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lio/data2viz/geojson/Geometry;
-	public final fun component2 ()Ljava/lang/Object;
-	public final fun component3 ()Ljava/lang/Object;
-	public final fun copy (Lio/data2viz/geojson/Geometry;Ljava/lang/Object;Ljava/lang/Object;)Lio/data2viz/geojson/Feature;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/Feature;Lio/data2viz/geojson/Geometry;Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;)Lio/data2viz/geojson/Feature;
+public final class io/data2viz/geojson/Crs {
+	public fun <init> ()V
+	public fun <init> (Lio/data2viz/geojson/CrsType;Ljava/util/Map;)V
+	public synthetic fun <init> (Lio/data2viz/geojson/CrsType;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lio/data2viz/geojson/CrsType;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Lio/data2viz/geojson/CrsType;Ljava/util/Map;)Lio/data2viz/geojson/Crs;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/Crs;Lio/data2viz/geojson/CrsType;Ljava/util/Map;ILjava/lang/Object;)Lio/data2viz/geojson/Crs;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getGeometry ()Lio/data2viz/geojson/Geometry;
-	public final fun getId ()Ljava/lang/Object;
-	public final fun getProperties ()Ljava/lang/Object;
+	public final fun getProperties ()Ljava/util/Map;
+	public final fun getType ()Lio/data2viz/geojson/CrsType;
 	public fun hashCode ()I
+	public final fun setProperties (Ljava/util/Map;)V
+	public final fun setType (Lio/data2viz/geojson/CrsType;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class io/data2viz/geojson/FeatureCollection : io/data2viz/geojson/GeoJsonObject {
-	public fun <init> ([Lio/data2viz/geojson/Feature;)V
-	public final fun component1 ()[Lio/data2viz/geojson/Feature;
-	public final fun copy ([Lio/data2viz/geojson/Feature;)Lio/data2viz/geojson/FeatureCollection;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/FeatureCollection;[Lio/data2viz/geojson/Feature;ILjava/lang/Object;)Lio/data2viz/geojson/FeatureCollection;
+public final class io/data2viz/geojson/CrsType : java/lang/Enum {
+	public static final field Companion Lio/data2viz/geojson/CrsType$Companion;
+	public static final field LINK Lio/data2viz/geojson/CrsType;
+	public static final field NAME Lio/data2viz/geojson/CrsType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun toValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/data2viz/geojson/CrsType;
+	public static fun values ()[Lio/data2viz/geojson/CrsType;
+}
+
+public final class io/data2viz/geojson/CrsType$Companion {
+	public final fun forValue (Ljava/lang/String;)Lio/data2viz/geojson/CrsType;
+}
+
+public final class io/data2viz/geojson/Feature : io/data2viz/geojson/GeoJsonObject {
+	public static final field Companion Lio/data2viz/geojson/Feature$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component2 ()Lio/data2viz/geojson/Geometry;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonPrimitive;
+	public final fun copy (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;)Lio/data2viz/geojson/Feature;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/Feature;Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/Geometry;Lkotlinx/serialization/json/JsonPrimitive;ILjava/lang/Object;)Lio/data2viz/geojson/Feature;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getFeatures ()[Lio/data2viz/geojson/Feature;
+	public fun getBbox ()[D
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
+	public final fun getGeometry ()Lio/data2viz/geojson/Geometry;
+	public final fun getId ()Ljava/lang/Object;
+	public final fun getIdPrimitive ()Lkotlinx/serialization/json/JsonPrimitive;
+	public final fun getProperties ()Ljava/lang/Object;
+	public final fun getPropertiesObject ()Lkotlinx/serialization/json/JsonObject;
 	public fun hashCode ()I
+	public fun setBbox ([D)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/data2viz/geojson/Feature$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/Feature$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/Feature;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/Feature;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/data2viz/geojson/Feature$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/data2viz/geojson/FeatureCollection : io/data2viz/geojson/GeoJsonObject {
+	public static final field Companion Lio/data2viz/geojson/FeatureCollection$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> ([Lio/data2viz/geojson/Feature;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/FeatureCollection;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/FeatureCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/FeatureCollection;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getBbox ()[D
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
+	public final fun getFeatures ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun setBbox ([D)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class io/data2viz/geojson/FeatureCollection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/FeatureCollection$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/FeatureCollection;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/FeatureCollection;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class io/data2viz/geojson/FeatureCollection$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public final class io/data2viz/geojson/FeatureProperties {
@@ -35,493 +112,304 @@ public final class io/data2viz/geojson/FeatureProperties {
 }
 
 public final class io/data2viz/geojson/GeoJsonKt {
+	public static final fun decodeGeoJson (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
 	public static final fun getAlt ([D)Ljava/lang/Double;
+	public static final fun getGeoJson ()Lkotlinx/serialization/json/Json;
+	public static final fun getGeoJsonModule ()Lkotlinx/serialization/modules/SerializersModule;
 	public static final fun getLat ([D)D
 	public static final fun getLon ([D)D
+	public static final fun toFeaturesAndProperties (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun toGeoJsonObject (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
+	public static final fun toJsonString (Lio/data2viz/geojson/GeoJsonObject;)Ljava/lang/String;
 }
 
 public abstract interface class io/data2viz/geojson/GeoJsonObject {
+	public static final field Companion Lio/data2viz/geojson/GeoJsonObject$Companion;
+	public abstract fun getBbox ()[D
+	public abstract fun getCrs ()Lio/data2viz/geojson/Crs;
+	public abstract fun setBbox ([D)V
+	public abstract fun setCrs (Lio/data2viz/geojson/Crs;)V
+}
+
+public final class io/data2viz/geojson/GeoJsonObject$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
 public abstract interface class io/data2viz/geojson/Geometry : io/data2viz/geojson/GeoJsonObject {
 }
 
 public final class io/data2viz/geojson/GeometryCollection : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/GeometryCollection$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun <init> ([Lio/data2viz/geojson/Geometry;)V
-	public final fun component1 ()[Lio/data2viz/geojson/Geometry;
-	public final fun copy ([Lio/data2viz/geojson/Geometry;)Lio/data2viz/geojson/GeometryCollection;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/GeometryCollection;[Lio/data2viz/geojson/Geometry;ILjava/lang/Object;)Lio/data2viz/geojson/GeometryCollection;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getGeometries ()[Lio/data2viz/geojson/Geometry;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/LineString : io/data2viz/geojson/Geometry {
-	public fun <init> ([[D)V
-	public final fun component1 ()[[D
-	public final fun copy ([[D)Lio/data2viz/geojson/LineString;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/LineString;[[DILjava/lang/Object;)Lio/data2viz/geojson/LineString;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[[D
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/MultiLineString : io/data2viz/geojson/Geometry {
-	public fun <init> ([[[D)V
-	public final fun component1 ()[[[D
-	public final fun copy ([[[D)Lio/data2viz/geojson/MultiLineString;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiLineString;[[[DILjava/lang/Object;)Lio/data2viz/geojson/MultiLineString;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[[[D
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/MultiPoint : io/data2viz/geojson/Geometry {
-	public fun <init> ([[D)V
-	public final fun component1 ()[[D
-	public final fun copy ([[D)Lio/data2viz/geojson/MultiPoint;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPoint;[[DILjava/lang/Object;)Lio/data2viz/geojson/MultiPoint;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[[D
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/MultiPolygon : io/data2viz/geojson/Geometry {
-	public fun <init> ([[[[D)V
-	public final fun component1 ()[[[[D
-	public final fun copy ([[[[D)Lio/data2viz/geojson/MultiPolygon;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPolygon;[[[[DILjava/lang/Object;)Lio/data2viz/geojson/MultiPolygon;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[[[[D
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/Point : io/data2viz/geojson/Geometry {
-	public fun <init> ([D)V
-	public final fun component1 ()[D
-	public final fun copy ([D)Lio/data2viz/geojson/Point;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/Point;[DILjava/lang/Object;)Lio/data2viz/geojson/Point;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[D
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/Polygon : io/data2viz/geojson/Geometry {
-	public fun <init> ([[[D)V
-	public final fun component1 ()[[[D
-	public final fun copy ([[[D)Lio/data2viz/geojson/Polygon;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/Polygon;[[[DILjava/lang/Object;)Lio/data2viz/geojson/Polygon;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getCoordinates ()[[[D
-	public final fun getHasHoles ()Z
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/ToGeoJsonObjectKt {
-	public static final fun toFeaturesAndProperties (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun toGeoJsonObject (Lio/data2viz/geojson/jackson/GeoJsonObject;)Lio/data2viz/geojson/GeoJsonObject;
-	public static final fun toGeoJsonObject (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
-	public static final fun toLine (Ljava/util/Collection;)[[D
-	public static final fun toSurface (Ljava/util/Collection;)[[[D
-	public static final fun toSurfaces (Ljava/util/Collection;)[[[[D
-}
-
-public final class io/data2viz/geojson/jackson/Crs {
-	public fun <init> ()V
-	public fun <init> (Lio/data2viz/geojson/jackson/jackson/CrsType;Ljava/util/Map;)V
-	public synthetic fun <init> (Lio/data2viz/geojson/jackson/jackson/CrsType;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public final fun component2 ()Ljava/util/Map;
-	public final fun copy (Lio/data2viz/geojson/jackson/jackson/CrsType;Ljava/util/Map;)Lio/data2viz/geojson/jackson/Crs;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/Crs;Lio/data2viz/geojson/jackson/jackson/CrsType;Ljava/util/Map;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/Crs;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getProperties ()Ljava/util/Map;
-	public final fun getType ()Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public fun hashCode ()I
-	public final fun setProperties (Ljava/util/Map;)V
-	public final fun setType (Lio/data2viz/geojson/jackson/jackson/CrsType;)V
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/jackson/Feature : io/data2viz/geojson/jackson/GeoJsonObject {
-	public static final field Companion Lio/data2viz/geojson/jackson/Feature$Companion;
-	public fun <init> ()V
-	public fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/jackson/Geometry;Lkotlinx/serialization/json/JsonElement;)V
-	public synthetic fun <init> (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/jackson/Geometry;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
-	public final fun component2 ()Lio/data2viz/geojson/jackson/Geometry;
-	public final fun component3 ()Lkotlinx/serialization/json/JsonElement;
-	public final fun copy (Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/jackson/Geometry;Lkotlinx/serialization/json/JsonElement;)Lio/data2viz/geojson/jackson/Feature;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/Feature;Lkotlinx/serialization/json/JsonObject;Lio/data2viz/geojson/jackson/Geometry;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/Feature;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
-	public final fun getGeometry ()Lio/data2viz/geojson/jackson/Geometry;
-	public final fun getId ()Lkotlinx/serialization/json/JsonElement;
-	public final fun getProperties ()Lkotlinx/serialization/json/JsonObject;
-	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class io/data2viz/geojson/jackson/Feature$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/Feature$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/Feature;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/Feature;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/Feature$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/FeatureCollection : io/data2viz/geojson/jackson/GeoJsonObject {
-	public static final field Companion Lio/data2viz/geojson/jackson/FeatureCollection$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun add (Lio/data2viz/geojson/GeoJsonObject;)Lio/data2viz/geojson/GeometryCollection;
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/FeatureCollection;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/FeatureCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/FeatureCollection;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/GeometryCollection;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/GeometryCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/GeometryCollection;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
-	public final fun getFeatures ()Ljava/util/List;
-	public fun hashCode ()I
-	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
-	public fun toString ()Ljava/lang/String;
-}
-
-public final synthetic class io/data2viz/geojson/jackson/FeatureCollection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/FeatureCollection$$serializer;
-	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/FeatureCollection;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/FeatureCollection;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/FeatureCollection$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public abstract interface class io/data2viz/geojson/jackson/GeoJsonObject {
-	public static final field Companion Lio/data2viz/geojson/jackson/GeoJsonObject$Companion;
-	public abstract fun getBbox ()[D
-	public abstract fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
-	public abstract fun setBbox ([D)V
-	public abstract fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
-}
-
-public final class io/data2viz/geojson/jackson/GeoJsonObject$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/GeoJsonObjectKt {
-	public static final fun getGeoJson ()Lkotlinx/serialization/json/Json;
-}
-
-public abstract interface class io/data2viz/geojson/jackson/Geometry : io/data2viz/geojson/jackson/GeoJsonObject {
-	public static final field Companion Lio/data2viz/geojson/jackson/Geometry$Companion;
-}
-
-public final class io/data2viz/geojson/jackson/Geometry$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/GeometryCollection : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/GeometryCollection$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/util/List;)V
-	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun add (Lio/data2viz/geojson/jackson/GeoJsonObject;)Lio/data2viz/geojson/jackson/GeometryCollection;
-	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/GeometryCollection;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/GeometryCollection;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/GeometryCollection;
-	public fun equals (Ljava/lang/Object;)Z
-	public fun getBbox ()[D
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getGeometries ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/GeometryCollection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/GeometryCollection$$serializer;
+public final synthetic class io/data2viz/geojson/GeometryCollection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/GeometryCollection$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/GeometryCollection;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/GeometryCollection;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/GeometryCollection;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/GeometryCollection;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/GeometryCollection$Companion {
+public final class io/data2viz/geojson/GeometryCollection$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/LineString : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/LineString$Companion;
+public final class io/data2viz/geojson/LineString : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/LineString$Companion;
 	public fun <init> (Ljava/util/List;)V
-	public fun <init> ([Lio/data2viz/geojson/jackson/LngLatAlt;)V
+	public fun <init> ([Lio/data2viz/geojson/LngLatAlt;)V
+	public fun <init> ([[D)V
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/LineString;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/LineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/LineString;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/LineString;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/LineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/LineString;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/LineString$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/LineString$$serializer;
+public final synthetic class io/data2viz/geojson/LineString$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/LineString$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/LineString;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/LineString;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/LineString;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/LineString;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/LineString$Companion {
+public final class io/data2viz/geojson/LineString$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/LngLatAlt {
+public final class io/data2viz/geojson/LngLatAlt {
 	public fun <init> (DDD[D)V
 	public synthetic fun <init> (DDD[DILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> ([D)V
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun get (I)D
 	public final fun getAdditionalElements ()[D
+	public final fun getAlt ()Ljava/lang/Double;
 	public final fun getAltitude ()D
+	public final fun getLat ()D
 	public final fun getLatitude ()D
+	public final fun getLon ()D
 	public final fun getLongitude ()D
+	public final fun getSize ()I
 	public final fun hasAltitude ()Z
 	public fun hashCode ()I
 	public final fun setAdditionalElements ([D)V
 	public final fun setAltitude (D)V
 	public final fun setLatitude (D)V
 	public final fun setLongitude (D)V
+	public final fun toDoubleArray ()[D
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class io/data2viz/geojson/jackson/MultiLineString : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/MultiLineString$Companion;
+public final class io/data2viz/geojson/LngLatAltSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/LngLatAltSerializer;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/LngLatAlt;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/LngLatAlt;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public final class io/data2viz/geojson/MultiLineString : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/MultiLineString$Companion;
 	public fun <init> (Ljava/util/List;)V
 	public fun <init> ([Ljava/util/List;)V
+	public fun <init> ([[[D)V
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/MultiLineString;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/MultiLineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/MultiLineString;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiLineString;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiLineString;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiLineString;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/MultiLineString$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/MultiLineString$$serializer;
+public final synthetic class io/data2viz/geojson/MultiLineString$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/MultiLineString$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/MultiLineString;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/MultiLineString;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/MultiLineString;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/MultiLineString;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/MultiLineString$Companion {
+public final class io/data2viz/geojson/MultiLineString$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/MultiPoint : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/MultiPoint$Companion;
+public final class io/data2viz/geojson/MultiPoint : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/MultiPoint$Companion;
 	public fun <init> (Ljava/util/List;)V
-	public fun <init> ([Lio/data2viz/geojson/jackson/LngLatAlt;)V
+	public fun <init> ([Lio/data2viz/geojson/LngLatAlt;)V
+	public fun <init> ([[D)V
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/MultiPoint;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/MultiPoint;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/MultiPoint;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiPoint;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPoint;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiPoint;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/MultiPoint$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/MultiPoint$$serializer;
+public final synthetic class io/data2viz/geojson/MultiPoint$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/MultiPoint$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/MultiPoint;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/MultiPoint;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/MultiPoint;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/MultiPoint;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/MultiPoint$Companion {
+public final class io/data2viz/geojson/MultiPoint$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/MultiPolygon : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/MultiPolygon$Companion;
+public final class io/data2viz/geojson/MultiPolygon : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/MultiPolygon$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/util/List;)V
-	public final fun add (Lio/data2viz/geojson/jackson/Polygon;)Lio/data2viz/geojson/jackson/MultiPolygon;
+	public fun <init> ([[[[D)V
+	public final fun add (Lio/data2viz/geojson/Polygon;)Lio/data2viz/geojson/MultiPolygon;
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/MultiPolygon;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/MultiPolygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/MultiPolygon;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/MultiPolygon;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/MultiPolygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/MultiPolygon;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/MultiPolygon$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/MultiPolygon$$serializer;
+public final synthetic class io/data2viz/geojson/MultiPolygon$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/MultiPolygon$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/MultiPolygon;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/MultiPolygon;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/MultiPolygon;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/MultiPolygon;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/MultiPolygon$Companion {
+public final class io/data2viz/geojson/MultiPolygon$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/Point : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/Point$Companion;
+public final class io/data2viz/geojson/Point : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/Point$Companion;
 	public fun <init> (DD)V
 	public fun <init> (DDD)V
 	public fun <init> (DDD[D)V
-	public fun <init> (Lio/data2viz/geojson/jackson/LngLatAlt;)V
-	public final fun component1 ()Lio/data2viz/geojson/jackson/LngLatAlt;
-	public final fun copy (Lio/data2viz/geojson/jackson/LngLatAlt;)Lio/data2viz/geojson/jackson/Point;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/Point;Lio/data2viz/geojson/jackson/LngLatAlt;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/Point;
+	public fun <init> (Lio/data2viz/geojson/LngLatAlt;)V
+	public fun <init> ([D)V
+	public final fun component1 ()Lio/data2viz/geojson/LngLatAlt;
+	public final fun copy (Lio/data2viz/geojson/LngLatAlt;)Lio/data2viz/geojson/Point;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/Point;Lio/data2viz/geojson/LngLatAlt;ILjava/lang/Object;)Lio/data2viz/geojson/Point;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
-	public final fun getCoordinates ()Lio/data2viz/geojson/jackson/LngLatAlt;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public final fun getCoordinates ()Lio/data2viz/geojson/LngLatAlt;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/Point$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/Point$$serializer;
+public final synthetic class io/data2viz/geojson/Point$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/Point$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/Point;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/Point;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/Point;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/Point;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/Point$Companion {
+public final class io/data2viz/geojson/Point$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/Polygon : io/data2viz/geojson/jackson/Geometry {
-	public static final field Companion Lio/data2viz/geojson/jackson/Polygon$Companion;
+public final class io/data2viz/geojson/Polygon : io/data2viz/geojson/Geometry {
+	public static final field Companion Lio/data2viz/geojson/Polygon$Companion;
 	public fun <init> ()V
 	public fun <init> (Ljava/util/List;)V
-	public fun <init> ([Lio/data2viz/geojson/jackson/LngLatAlt;)V
+	public fun <init> ([Lio/data2viz/geojson/LngLatAlt;)V
+	public fun <init> ([[[D)V
 	public final fun component1 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/jackson/Polygon;
-	public static synthetic fun copy$default (Lio/data2viz/geojson/jackson/Polygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/jackson/Polygon;
+	public final fun copy (Ljava/util/List;)Lio/data2viz/geojson/Polygon;
+	public static synthetic fun copy$default (Lio/data2viz/geojson/Polygon;Ljava/util/List;ILjava/lang/Object;)Lio/data2viz/geojson/Polygon;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getBbox ()[D
 	public final fun getCoordinates ()Ljava/util/List;
-	public fun getCrs ()Lio/data2viz/geojson/jackson/Crs;
+	public fun getCrs ()Lio/data2viz/geojson/Crs;
 	public final fun getExteriorRing ()Ljava/util/List;
+	public final fun getHasHoles ()Z
 	public final fun getInteriorRing (I)Ljava/util/List;
 	public final fun getInteriorRings ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun setBbox ([D)V
-	public fun setCrs (Lio/data2viz/geojson/jackson/Crs;)V
+	public fun setCrs (Lio/data2viz/geojson/Crs;)V
 	public fun toString ()Ljava/lang/String;
-	public final fun withInteriorRing (Ljava/util/List;)Lio/data2viz/geojson/jackson/Polygon;
+	public final fun withInteriorRing (Ljava/util/List;)Lio/data2viz/geojson/Polygon;
 }
 
-public final synthetic class io/data2viz/geojson/jackson/Polygon$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/Polygon$$serializer;
+public final synthetic class io/data2viz/geojson/Polygon$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lio/data2viz/geojson/Polygon$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/Polygon;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/Polygon;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/Polygon;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/Polygon;)V
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/jackson/Polygon$Companion {
+public final class io/data2viz/geojson/Polygon$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class io/data2viz/geojson/jackson/jackson/CrsType : java/lang/Enum {
-	public static final field Companion Lio/data2viz/geojson/jackson/jackson/CrsType$Companion;
-	public static final field LINK Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public static final field NAME Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public static final fun forValue (Ljava/lang/String;)Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public final fun toValue ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lio/data2viz/geojson/jackson/jackson/CrsType;
-	public static fun values ()[Lio/data2viz/geojson/jackson/jackson/CrsType;
-}
-
-public final class io/data2viz/geojson/jackson/jackson/CrsType$Companion {
-	public final fun forValue (Ljava/lang/String;)Lio/data2viz/geojson/jackson/jackson/CrsType;
-}
-
-public final class io/data2viz/geojson/jackson/jackson/GeoJsonObjectSerializerKt {
-	public static final fun decodeGeoJson (Ljava/lang/String;)Lio/data2viz/geojson/jackson/GeoJsonObject;
-	public static final fun toAnyValue (Lkotlinx/serialization/json/JsonElement;)Ljava/lang/Object;
-	public static final fun toJsonString (Lio/data2viz/geojson/jackson/GeoJsonObject;)Ljava/lang/String;
-}
-
-public final class io/data2viz/geojson/jackson/jackson/LngLatAltSerializer : kotlinx/serialization/KSerializer {
-	public static final field INSTANCE Lio/data2viz/geojson/jackson/jackson/LngLatAltSerializer;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lio/data2viz/geojson/jackson/LngLatAlt;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lio/data2viz/geojson/jackson/LngLatAlt;)V
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
