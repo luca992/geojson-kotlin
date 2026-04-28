@@ -355,16 +355,10 @@ final object io.data2viz.geojson/LngLatAltSerializer : kotlinx.serialization/KSe
     final fun serialize(kotlinx.serialization.encoding/Encoder, io.data2viz.geojson/LngLatAlt) // io.data2viz.geojson/LngLatAltSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.data2viz.geojson.LngLatAlt){}[0]
 }
 
-final val io.data2viz.geojson/alt // io.data2viz.geojson/alt|@kotlin.DoubleArray{}alt[0]
-    final fun (kotlin/DoubleArray).<get-alt>(): kotlin/Double? // io.data2viz.geojson/alt.<get-alt>|<get-alt>@kotlin.DoubleArray(){}[0]
 final val io.data2viz.geojson/geoJson // io.data2viz.geojson/geoJson|{}geoJson[0]
     final fun <get-geoJson>(): kotlinx.serialization.json/Json // io.data2viz.geojson/geoJson.<get-geoJson>|<get-geoJson>(){}[0]
 final val io.data2viz.geojson/geoJsonModule // io.data2viz.geojson/geoJsonModule|{}geoJsonModule[0]
     final fun <get-geoJsonModule>(): kotlinx.serialization.modules/SerializersModule // io.data2viz.geojson/geoJsonModule.<get-geoJsonModule>|<get-geoJsonModule>(){}[0]
-final val io.data2viz.geojson/lat // io.data2viz.geojson/lat|@kotlin.DoubleArray{}lat[0]
-    final fun (kotlin/DoubleArray).<get-lat>(): kotlin/Double // io.data2viz.geojson/lat.<get-lat>|<get-lat>@kotlin.DoubleArray(){}[0]
-final val io.data2viz.geojson/lon // io.data2viz.geojson/lon|@kotlin.DoubleArray{}lon[0]
-    final fun (kotlin/DoubleArray).<get-lon>(): kotlin/Double // io.data2viz.geojson/lon.<get-lon>|<get-lon>@kotlin.DoubleArray(){}[0]
 
 final fun (kotlin/String).io.data2viz.geojson/toGeoJsonObject(): io.data2viz.geojson/GeoJsonObject // io.data2viz.geojson/toGeoJsonObject|toGeoJsonObject@kotlin.String(){}[0]
 final fun <#A: kotlin/Any?> (kotlin/String).io.data2viz.geojson/toFeaturesAndProperties(kotlin/Function1<io.data2viz.geojson/FeatureProperties, #A>): kotlin.collections/List<kotlin/Pair<io.data2viz.geojson/Feature, #A>> // io.data2viz.geojson/toFeaturesAndProperties|toFeaturesAndProperties@kotlin.String(kotlin.Function1<io.data2viz.geojson.FeatureProperties,0:0>){0§<kotlin.Any?>}[0]

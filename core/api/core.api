@@ -73,11 +73,8 @@ public final class io/data2viz/geojson/FeatureProperties {
 }
 
 public final class io/data2viz/geojson/GeoJsonKt {
-	public static final fun getAlt ([D)Ljava/lang/Double;
 	public static final fun getGeoJson ()Lkotlinx/serialization/json/Json;
 	public static final fun getGeoJsonModule ()Lkotlinx/serialization/modules/SerializersModule;
-	public static final fun getLat ([D)D
-	public static final fun getLon ([D)D
 	public static final fun toFeaturesAndProperties (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun toGeoJsonObject (Ljava/lang/String;)Lio/data2viz/geojson/GeoJsonObject;
 }

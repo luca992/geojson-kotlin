@@ -126,47 +126,26 @@ data class GeometryCollection(
 
 
 /**
- * Position is an alias on a DoubleArray that represents the coordinates
- * in degrees for longitude (index = 0), latitude (index = 1) and altitude (meters).
- * The altitude is not a mandatory information. The position can be 2 length array or
- * a 3 length array (with altitude)
+ * Position represents a coordinate with longitude, latitude, and optional altitude.
  */
-@Deprecated("Use LngLatAlt directly", ReplaceWith("LngLatAlt"))
-typealias Position = DoubleArray
+typealias Position = LngLatAlt
 
 /**
  * Type alias of an array of Positions
  */
-@Deprecated("Use List<LngLatAlt> directly")
-typealias Positions = Array<DoubleArray>
+typealias Positions = List<LngLatAlt>
 
 /**
  * Type alias for an array of Positions
  */
-@Deprecated("Use List<LngLatAlt> directly")
-typealias Line = Array<DoubleArray>
+typealias Line = List<LngLatAlt>
 
 /**
  * Type alias of an array of lines.
  */
-@Deprecated("Use List<List<LngLatAlt>> directly")
-typealias Lines = Array<Array<DoubleArray>>
+typealias Lines = List<List<LngLatAlt>>
 
-@Deprecated("Use List<List<List<LngLatAlt>>> directly")
-typealias Surface = Array<Array<Array<DoubleArray>>>
-
-
-@Deprecated("Use LngLatAlt.lon directly", ReplaceWith("this[0]"))
-val DoubleArray.lon: Double
-    get() = this[0]
-
-@Deprecated("Use LngLatAlt.lat directly", ReplaceWith("this[1]"))
-val DoubleArray.lat: Double
-    get() = this[1]
-
-@Deprecated("Use LngLatAlt.alt directly", ReplaceWith("if (size > 2) this[2] else null"))
-val DoubleArray.alt: Double?
-    get() = if (size > 2) this[2] else null
+typealias Surface = List<List<List<LngLatAlt>>>
 
 
 val geoJsonModule = SerializersModule {
