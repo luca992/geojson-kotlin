@@ -10,7 +10,7 @@ class LngLatAlt(
     var latitude: Double,
     private var altitude: Double = Double.NaN,
     vararg additionalElements: Double
-) {
+) : Iterable<Double> {
 
     private var additionalElements = DoubleArray(0)
 
@@ -25,6 +25,15 @@ class LngLatAlt(
         1 -> latitude
         2 -> getAltitude()
         else -> getAdditionalElements()[index - 3]
+    }
+
+    override fun iterator(): Iterator<Double> = iterator {
+        yield(longitude)
+        yield(latitude)
+        if (hasAltitude()) {
+            yield(altitude)
+            for (e in getAdditionalElements()) yield(e)
+        }
     }
 
     constructor(array: DoubleArray) : this(

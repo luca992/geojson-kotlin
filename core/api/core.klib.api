@@ -154,7 +154,7 @@ final class io.data2viz.geojson/LineString : io.data2viz.geojson/Geometry { // i
     }
 }
 
-final class io.data2viz.geojson/LngLatAlt { // io.data2viz.geojson/LngLatAlt|null[0]
+final class io.data2viz.geojson/LngLatAlt : kotlin.collections/Iterable<kotlin/Double> { // io.data2viz.geojson/LngLatAlt|null[0]
     constructor <init>(kotlin/Double, kotlin/Double, kotlin/Double = ..., kotlin/DoubleArray...) // io.data2viz.geojson/LngLatAlt.<init>|<init>(kotlin.Double;kotlin.Double;kotlin.Double;kotlin.DoubleArray...){}[0]
     constructor <init>(kotlin/DoubleArray) // io.data2viz.geojson/LngLatAlt.<init>|<init>(kotlin.DoubleArray){}[0]
 
@@ -180,6 +180,7 @@ final class io.data2viz.geojson/LngLatAlt { // io.data2viz.geojson/LngLatAlt|nul
     final fun getAltitude(): kotlin/Double // io.data2viz.geojson/LngLatAlt.getAltitude|getAltitude(){}[0]
     final fun hasAltitude(): kotlin/Boolean // io.data2viz.geojson/LngLatAlt.hasAltitude|hasAltitude(){}[0]
     final fun hashCode(): kotlin/Int // io.data2viz.geojson/LngLatAlt.hashCode|hashCode(){}[0]
+    final fun iterator(): kotlin.collections/Iterator<kotlin/Double> // io.data2viz.geojson/LngLatAlt.iterator|iterator(){}[0]
     final fun setAdditionalElements(kotlin/DoubleArray...) // io.data2viz.geojson/LngLatAlt.setAdditionalElements|setAdditionalElements(kotlin.DoubleArray...){}[0]
     final fun setAltitude(kotlin/Double) // io.data2viz.geojson/LngLatAlt.setAltitude|setAltitude(kotlin.Double){}[0]
     final fun toDoubleArray(): kotlin/DoubleArray // io.data2viz.geojson/LngLatAlt.toDoubleArray|toDoubleArray(){}[0]

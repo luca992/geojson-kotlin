@@ -153,7 +153,7 @@ public final class io/data2viz/geojson/LineString$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class io/data2viz/geojson/LngLatAlt {
+public final class io/data2viz/geojson/LngLatAlt : java/lang/Iterable, kotlin/jvm/internal/markers/KMappedMarker {
 	public fun <init> (DDD[D)V
 	public synthetic fun <init> (DDD[DILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun <init> ([D)V
@@ -169,6 +169,7 @@ public final class io/data2viz/geojson/LngLatAlt {
 	public final fun getSize ()I
 	public final fun hasAltitude ()Z
 	public fun hashCode ()I
+	public fun iterator ()Ljava/util/Iterator;
 	public final fun setAdditionalElements ([D)V
 	public final fun setAltitude (D)V
 	public final fun setLatitude (D)V
