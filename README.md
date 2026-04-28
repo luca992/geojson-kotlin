@@ -5,16 +5,10 @@ GeoJson Kotlin
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 
 
-This project goal is to provide [GeoJson](https://tools.ietf.org/html/rfc7946) deserialization for kotlin multiplatform (JVM, JS).
+This project goal is to provide [GeoJson](https://tools.ietf.org/html/rfc7946) serialization/deserialization for Kotlin Multiplatform,
+backed by [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization).
 
-
-
-
-
-The specific format of GeoJson files does not allow the use of kotlinx.serialization. JS and
-JVM implementations are completely distinct but they share the same base objects and interfaces.
-
-JVM implementation is based on the project [GeoJson-Jackson](https://github.com/opendatalab-de/geojson-jackson).
+Supports JVM, JS, Wasm, iOS, macOS, Linux, Windows (mingw), tvOS, and watchOS.
 
 ## Using in your projects
 
@@ -33,14 +27,12 @@ repositories {
 ```
 
 The project is deployed using Gradle metadata. You can use the dependency
-on Gradle Metadata. Depending on your platform (JS or JVM) the correct
+on Gradle Metadata. Depending on your platform the correct
 artifact will be imported.
 
-```groovy
-    compile 'io.data2viz.geojson:core:0.6.6'
+```kotlin
+implementation("io.data2viz.geojson:core:0.7.0")
 ```
-
-The JS version is available in [both modes](https://kotlinlang.org/docs/reference/js-ir-compiler.html), `Legacy` and `IR`.
 
 You can then use the String extension toGeoJsonObject to transform any String into a GeoJsonObject:
 
@@ -54,10 +46,9 @@ need to pass a function that transform the properties in a specific domain objec
 ```kotlin
 class CountryProperties(val name: String, val id: Int)
 
-val countries = countriesGeoJson.toFeatures {
+val countries = countriesGeoJson.toFeaturesAndProperties {
         CountryProperties(stringProperty("name"), intProperty("id"))
 }
 ```
 
-You then retrieve a list of `Pair<Feature, CountryPropertiess>`
-
+You then retrieve a list of `Pair<Feature, CountryProperties>`
